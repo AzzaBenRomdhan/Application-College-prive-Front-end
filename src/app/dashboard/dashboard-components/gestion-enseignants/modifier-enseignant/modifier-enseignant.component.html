@@ -1,0 +1,62 @@
+<mat-dialog-content class="mat-typography form-container">
+    <div class="dialog-header">
+      <h3 class="dialog-title">Modifier un enseignant</h3>
+    </div>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nom</mat-label>
+      <input matInput placeholder="Nom de l'enseignant" value="Dupont" readonly>
+      <mat-icon matPrefix>person</mat-icon>
+      <mat-hint>Impossible de modifier</mat-hint>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Prénom</mat-label>
+      <input matInput placeholder="Prénom de l'enseignant" value="Jean" readonly>
+      <mat-icon matPrefix>person_outline</mat-icon>
+      <mat-hint>Impossible de modifier</mat-hint>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nom d'utilisateur</mat-label>
+      <input matInput placeholder="Nom d'utilisateur unique" value="jdupont" readonly>
+      <mat-icon matPrefix>badge</mat-icon>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Libellé</mat-label>
+      <input matInput placeholder="Exemple : Professeur de mathématiques" value="Professeur de mathématiques">
+      <mat-icon matPrefix>work_outline</mat-icon>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Adresse email</mat-label>
+      <input matInput placeholder="exemple@domain.com" type="email" value="jdupont@domain.com" required>
+      <mat-icon matPrefix>email</mat-icon>
+      <mat-hint>Un email valide est requis</mat-hint>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput type="password" placeholder="Mot de passe sécurisé" value="********" required>
+      <mat-icon matPrefix>lock</mat-icon>
+      <mat-hint>Minimum 8 caractères</mat-hint>
+    </mat-form-field>
+  
+    <!-- Nouveau champ pour associer une classe -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Classe</mat-label>
+      <mat-select [(value)]="selectedClasse">
+        <mat-option value="classe1">Classe 1</mat-option>
+        <mat-option value="classe2">Classe 2</mat-option>
+        <mat-option value="classe3">Classe 3</mat-option>
+      </mat-select>
+      <mat-icon matPrefix>school</mat-icon>
+    </mat-form-field>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions class="action-buttons">
+    <button mat-raised-button color="primary" (click)="enregistrerModification()">Enregistrer</button>
+    <button mat-button [mat-dialog-close]="true" color="warn">Annuler</button>
+  </mat-dialog-actions>
+  

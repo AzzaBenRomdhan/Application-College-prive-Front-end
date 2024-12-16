@@ -1,0 +1,24 @@
+<div class="dashboard">
+    <div class="card" *ngFor="let item of menuItems" (click)="navigateTo(item.route)">
+      <i class="{{ item.icon }}"></i>
+      <span>{{ item.name }}</span>
+    </div>
+</div>
+<!-- Section pour les anciennes publications -->
+<div class="previous-posts-section">
+  <h3 class="section-title">Actualités</h3>
+  <div class="post-cards-container">
+    <div *ngFor="let post of previousPosts" class="post-card">
+      <div class="post-icon">
+        <mat-icon>{{ post.icon }}</mat-icon>
+      </div>
+      <div class="post-content">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.description }}</p>
+        <small>{{ post.date }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+  

@@ -1,0 +1,51 @@
+
+<button mat-raised-button class="mb-2 me-2" color="primary" (click)="openAddEnseignant()">
+    <i class="fa-solid fa-plus me-1"></i>
+    Ajouter enseignant
+</button>
+<div class="container">
+    <h2>Gestion des Enseignants</h2>
+    <!-- Barre de recherche et filtres -->
+    <div class="filters">
+        <input type="text" class="search-bar" placeholder="Rechercher un enseignant...">
+        <select class="filter-dropdown">
+            <option value="">Filtrer par département</option>
+            <option value="maths">Mathématiques</option>
+            <option value="physics">Physique</option>
+            <option value="chemistry">Chimie</option>
+        </select>
+        <select class="filter-dropdown">
+            <option value="">Filtrer par classe</option>
+            <option value="classe1">Classe 1</option>
+            <option value="classe2">Classe 2</option>
+            <option value="classe3">Classe 3</option>
+        </select>
+        <button class="filter-button">Filtrer</button>
+    </div>
+
+    <!-- Boutons de tri -->
+    <div class="sort-buttons">
+        <button class="sort-btn" data-sort="name">Trier par nom</button>
+        <button class="sort-btn" data-sort="department">Trier par département</button>
+    </div>
+
+    <!-- Tableau -->
+    <ul class="responsive-table">
+        <li class="table-header">
+          <div class="col col-1">ID</div>
+          <div class="col col-2">Nom</div>
+          <div class="col col-4">Actions</div>
+        </li>
+      
+        <!-- Itération sur la liste des utilisateurs -->
+        <li *ngFor="let user of users" class="table-row">
+          <div class="col col-1" data-label="ID">{{ user.id }}</div>
+          <div class="col col-2" data-label="Nom">{{ user.nom }} {{ user.prenom }}</div>
+          <div class="col col-4" data-label="Actions">
+            <button class="action-btn details-btn" (click)="detailsEnseignant()">Détails</button>
+            <button class="action-btn edit-btn" (click)="modifierEnseignant()">Modifier</button>
+            <button class="action-btn delete-btn" (click)="openConfirmationDialog(user.id)">Supprimer</button>
+          </div>
+        </li>
+    </ul>   
+</div>

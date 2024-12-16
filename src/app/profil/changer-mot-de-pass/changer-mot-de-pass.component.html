@@ -1,0 +1,39 @@
+<div class="change-password-container">
+  <h2>Changer le mot de passe</h2>
+
+  <form (ngSubmit)="changePassword()">
+    <div class="form-group">
+      <label for="newPassword">Nouveau mot de passe :</label>
+      <input 
+        type="password" 
+        id="newPassword" 
+        [(ngModel)]="newPassword" 
+        name="newPassword" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirmer le mot de passe :</label>
+      <input 
+        type="password" 
+        id="confirmPassword" 
+        [(ngModel)]="confirmPassword" 
+        name="confirmPassword" 
+        required>
+    </div>
+
+    <button 
+      type="submit" 
+      [disabled]="!newPassword || !confirmPassword || newPassword !== confirmPassword">
+      Changer le mot de passe
+    </button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+</div>

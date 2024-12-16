@@ -1,0 +1,62 @@
+<mat-card class="reclamation-card">
+    <mat-card-header>
+      <mat-card-title>Gestion de discipline élève</mat-card-title>
+    </mat-card-header>
+  <div class="student-table">
+    <table mat-table [dataSource]="students">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let student"> {{ student.name }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="reason">
+        <th mat-header-cell *matHeaderCellDef> Raison </th>
+        <td mat-cell *matCellDef="let student"> {{ student.reason }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Statut </th>
+        <td mat-cell *matCellDef="let student"> {{ student.status | titlecase }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let student">
+          <button mat-raised-button color="primary" (click)="selectedStudent = student">
+            Détails
+          </button>
+          <button mat-raised-button color="warn" (click)="removeStudent(student)">
+            Supprimer
+          </button>
+          <button mat-raised-button color="accent" (click)="reinstateStudent(student)" *ngIf="student.status === 'eliminated'">
+            Réintégrer
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</mat-card>
+  <!-- Vue du détail de l'élève -->
+  <mat-dialog-content *ngIf="selectedStudent">
+    <h3>{{ selectedStudent.name }}</h3>
+    <p><strong>Raison de l'élimination : </strong>{{ selectedStudent.reason }}</p>
+    <p><strong>Date de l'élimination : </strong>{{ selectedStudent.date }}</p>
+  
+    <!-- Réponse à l'élève -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Commentaires ou Réponses</mat-label>
+      <textarea matInput [(ngModel)]="response" placeholder="Entrez votre commentaire ici..."></textarea>
+    </mat-form-field>
+  
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="submitResponse()">Envoyer la convocation</button>
+      <button mat-raised-button color="warn" (click)="removeStudent(selectedStudent)">Supprimer l'élève</button>
+      <button mat-raised-button color="accent" (click)="reinstateStudent(selectedStudent)" *ngIf="selectedStudent.status === 'eliminated'">
+        Réintégrer l'élève
+      </button>
+    </div>
+  </mat-dialog-content>
+  

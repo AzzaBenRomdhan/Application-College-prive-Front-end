@@ -1,0 +1,120 @@
+.reclamation-card {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    flex: 1; /* Chaque carte prendra la même largeur */
+    margin: 0; /* Retirer la marge par défaut des cartes */
+  }
+  
+  mat-card-header {
+    background-color: #1d1d5c;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 10px;
+  }
+  
+  mat-card-title {
+    font-size: 5px;
+  }
+  
+  .responsive-table {
+    li {
+      border-radius: 3px;
+      padding: 25px 30px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+    .table-header {
+      background-color: #95A5A6;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .table-row {
+      background-color: #ffffff;
+      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    }
+    .col-1 {
+      flex-basis: 25%;
+    }
+    .col-2 {
+      flex-basis: 25%;
+    }
+    .col-3 {
+      flex-basis: 25%;
+    }
+    .col-4 {
+      flex-basis: 25%;
+    }
+    
+    @media all and (max-width: 767px) {
+      .table-header {
+        display: none;
+      }
+  
+      li {
+        display: block;
+      }
+      .col {
+        
+        flex-basis: 100%;
+        
+      }
+      .col {
+        display: flex;
+        padding: 10px 0;
+        &:before {
+          color: #6C7A89;
+          padding-right: 10px;
+          content: attr(data-label);
+          flex-basis: 50%;
+          text-align: right;
+        }
+      }
+    }
+  
+  
+    button {
+      margin: 5px;
+    }
+  }
+  
+  mat-dialog-content {
+    padding: 20px;
+  
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+  
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+  
+  
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-right: 50px;
+  }
+  .form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;  /* Aligner les éléments verticalement */
+    margin-bottom: 10px;
+  }
+  .gestion-container {
+    display: flex;
+    justify-content: space-between; /* Espacement entre les cartes */
+    gap: 20px; /* Optionnel, pour ajouter de l'espace entre les deux cartes */
+  }
+  
