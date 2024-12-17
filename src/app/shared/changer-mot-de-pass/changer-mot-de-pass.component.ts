@@ -13,6 +13,7 @@ export class ChangerMotDePassComponent implements OnInit{
   confirmPassword: string = '';
   errorMessage: string = '';
   successMessage: string = '';
+  passwordField: boolean = false;
 
   constructor(private authService: AuthService, private userService: UserService) {}
 
@@ -30,9 +31,19 @@ export class ChangerMotDePassComponent implements OnInit{
     }
   }
 
+  // Toggle visibility of password
+  togglePasswordVisibility() {
+    this.passwordField = !this.passwordField;
+  }
+
+  // Password validation
+  validatePasswords(): boolean {
+    return this.newPassword === this.confirmPassword && this.newPassword.length >= 6;
+  }
+
   changePassword(): void {
-    if (this.newPassword !== this.confirmPassword) {
-      this.errorMessage = "Les mots de passe ne correspondent pas.";
+    if (!this.validatePasswords()) {
+      this.errorMessage = "Les mots de passe ne correspondent pas ou sont trop courts.";
       return;
     }
 

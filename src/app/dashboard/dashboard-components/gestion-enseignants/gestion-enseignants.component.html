@@ -43,7 +43,7 @@
           <div class="col col-2" data-label="Nom">{{ user.nom }} {{ user.prenom }}</div>
           <div class="col col-4" data-label="Actions">
             <button class="action-btn details-btn" (click)="detailsEnseignant()">Détails</button>
-            <button class="action-btn edit-btn" (click)="modifierEnseignant()">Modifier</button>
+            <button class="action-btn edit-btn" (click)="modifierEnseignant(user)">Modifier</button>
             <button class="action-btn delete-btn" (click)="openConfirmationDialog(user.id)">Supprimer</button>
           </div>
         </li>

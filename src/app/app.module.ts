@@ -14,16 +14,12 @@ import { TawasalnaModule } from './tawasalna-module'
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ChangerMotDePassComponent } from './profil/changer-mot-de-pass/changer-mot-de-pass.component';
-import { MonProfilComponent } from './profil/mon-profil/mon-profil.component';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     FullComponent,
-    ChangerMotDePassComponent,
-    MonProfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +33,7 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule
-    ],
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

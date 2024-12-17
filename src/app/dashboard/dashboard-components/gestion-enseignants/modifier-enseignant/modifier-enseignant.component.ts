@@ -1,55 +1,53 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ClasseService } from 'src/app/services/classe.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-modifier-enseignant',
   templateUrl: './modifier-enseignant.component.html',
   styleUrls: ['./modifier-enseignant.component.scss']
 })
-export class ModifierEnseignantComponent {
-  selectedClasse: string = 'classe1';  // Valeur initiale de la classe, à ajuster selon l'enseignant actuel
-
-  constructor(private dialogRef: MatDialogRef<ModifierEnseignantComponent>) {}
-
+export class ModifierEnseignantComponent{
+  profForm: FormGroup; // Utilisation d'un formulaire réactif
   
-  availableClasses = ['Term S', 'Term L', 'Term ES', 'Term STMG', 'Term STI2D']; // Liste des classes disponibles
-  availableMatiere = ['Mathématiques', 'Français', 'Physique', 'SVT', 'Anglais']; // Liste des matières disponibles
-
-  // Exemple d'enseignant à modifier
-  enseignant = {
-    nom: 'Dupont',
-    prenom: 'Jean',
-    username: 'jdupont',
-    libelle: 'Professeur de Mathématiques',
-    email: 'j.dupont@ecole.fr',
-    classes: ['Term S', 'Term L'],  // Classes déjà affectées
-    dateRecrutement: '2015-09-01',
-    matiere: ['Mathématiques', 'Français']
-  };
-
-  // Variable pour la nouvelle classe à ajouter
-  newClass: string = '';
-
-// Méthode pour ajouter une nouvelle classe
-assignNewClass() {
-  // Pour cette version statique, on ne gère pas d'input utilisateur dynamique. La classe à ajouter peut être "statique".
-  if (this.newClass && !this.enseignant.classes.includes(this.newClass)) {
-    this.enseignant.classes.push(this.newClass);
-    this.newClass = ''; // Réinitialiser après ajout
-    alert('Classe ajoutée avec succès.');
-  } else {
-    alert('Cette classe est déjà assignée ou invalide.');
-  }
-}
-
-  // Méthode pour enregistrer les modifications
-  saveChanges() {
-
-  }
-  enregistrerModification() {
-    // Logique d'enregistrement ici
-    // Par exemple, mettre à jour la classe de l'enseignant avec la valeur de selectedClasse
-    console.log('Classe modifiée :', this.selectedClasse);
-    this.dialogRef.close(); // Ferme la fenêtre de dialogue après l'enregistrement
-  }
+    constructor(
+      @Inject(MAT_DIALOG_DATA) public data: any,
+      private dialogRef: MatDialogRef<ModifierEnseignantComponent>,
+      private userService: UserService,
+      private fb: FormBuilder
+    ) {
+      // Initialiser le formulaire avec les données reçues
+      this.profForm = this.fb.group({
+        nom: [data.nom, Validators.required],
+        prenom: [data.prenom, Validators.required],
+        login: [data.login, Validators.required],
+        email: [data.email, [Validators.required, Validators.email]],
+        libelle: [data.libelle, Validators.required],
+      });
+    }
+  
+    saveChanges(): void {
+      if (this.profForm.valid) {
+        const updatedEleve = this.profForm.value;
+  
+        // Appel au service pour mettre à jour l'utilisateur
+        this.userService.updateUser(updatedEleve,this.data.id).subscribe({
+          next: () => {
+            console.log('Utilisateur mis à jour avec succès');
+            this.dialogRef.close(updatedEleve); // Fermer la boîte de dialogue et retourner les données
+          },
+          error: (error) => {
+            console.error('Erreur lors de la mise à jour de l’utilisateur', error);
+          },
+        });
+      } else {
+        console.warn('Formulaire invalide');
+      }
+    }
+  
+    closeDialog(): void {
+      this.dialogRef.close(); // Fermer la boîte de dialogue sans sauvegarder
+    }
 }

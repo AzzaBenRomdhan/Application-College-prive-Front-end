@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AddCoursComponent } from './add-cours/add-cours.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AddCoursComponent } from './add-cours/add-cours.component';
     DashboardModule,
     TawasalnaModule,
     FormsModule,
+    SharedModule
   ]
 })
 export class EnseignantModule { }

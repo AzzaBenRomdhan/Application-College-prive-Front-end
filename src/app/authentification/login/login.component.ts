@@ -12,7 +12,7 @@ export class LoginComponent {
   message = '';
   token = '';
   role = '';
-
+  hide: boolean = true;  
   constructor(private authService: AuthService) {}
 
   login() {
@@ -31,5 +31,9 @@ export class LoginComponent {
         console.error('Login error:', error);
       }
     );
+  }
+
+  togglePasswordVisibility() {
+    this.hide = !this.hide;  // Bascule l'état de visibilité du mot de passe
   }
 }

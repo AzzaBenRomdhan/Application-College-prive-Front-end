@@ -67,7 +67,7 @@ export class AuthService {
         this.router.navigate(['/dashboard/home-enseignant']);
         break;
       case 'parent':
-        this.router.navigate(['/dashboard/home-parent']);
+        this.router.navigate(['/parent/home-parent']);
         break;
       default:
         this.router.navigate(['/']);  // Par défaut, on redirige vers la page d'accueil

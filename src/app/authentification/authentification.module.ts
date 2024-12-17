@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthentificationComponent } from './authentification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TawasalnaModule } from '../tawasalna-module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AuthentificationRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    TawasalnaModule
   ]
 })
 export class AuthentificationModule { }

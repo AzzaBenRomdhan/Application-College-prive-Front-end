@@ -41,6 +41,7 @@ import { GestionClendrierComponent } from './dashboard-components/gestion-clendr
 import { HomeMoyenneEtNoteComponent } from './dashboard-components/GestionMoyenneEtNote/home-moyenne-et-note/home-moyenne-et-note.component';
 import { NotesDetailsComponent } from './dashboard-components/GestionMoyenneEtNote/notes-details/notes-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { ProfileComponent } from '../parent/profile/profile.component';
 
 
 
@@ -83,6 +84,7 @@ import { SharedModule } from '../shared/shared.module';
     GestionClendrierComponent,
     HomeMoyenneEtNoteComponent,
     NotesDetailsComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

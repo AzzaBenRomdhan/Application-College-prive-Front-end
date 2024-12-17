@@ -103,15 +103,53 @@
           <li class="list-group nav-item" *ngIf="userProfile == 'eleve'">
             <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/eleve/mescours"
               class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
-              <i-feather name="box" class="feather-base me-16"></i-feather> <span class="ps-4">Mes cours</span>
+              <i-feather name="book-open" class="feather-base me-16"></i-feather> <span class="ps-4">Mes cours</span>
             </a>
           </li>
-
+          <li class="list-group nav-item" *ngIf="userProfile == 'eleve'">
+            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/eleve/notes-moyenne"
+              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
+              <i-feather name="bar-chart-2" class="feather-base me-16"></i-feather> <span class="ps-4">Notes et Moyennes</span>
+            </a>
+          </li>
+          <li class="list-group nav-item" *ngIf="userProfile == 'eleve'">
+            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/eleve/emploi-du-temps"
+              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
+              <i-feather name="clock" class="feather-base me-16"></i-feather> <span class="ps-4">Emploi du temps</span>
+            </a>
+          </li>
+          <li class="list-group nav-item" *ngIf="userProfile == 'eleve'">
+            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/eleve/calendrier-examen"
+              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
+              <i-feather name="calendar" class="feather-base me-16"></i-feather> <span class="ps-4">Calendrier Examen</span>
+            </a>
+          </li>
+          <li class="list-group nav-item" *ngIf="userProfile == 'eleve'">
+            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/eleve/menu"
+              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
+              <i class="fas fa-utensils me-16"></i> <span class="ps-4">Menu</span>
+            </a>
+          </li>
+          <li class="list-group nav-item" *ngIf="userProfile == 'eleve'">
+            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/eleve/reclamation"
+              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
+              <i-feather name="alert-circle" class="feather-base me-16"></i-feather> <span class="ps-4">Réclamation</span>
+            </a>
+          </li>
+          
           <!--Lien pour les ensenignant-->
           <li class="list-group nav-item" *ngIf="userProfile == 'enseignant'">
             <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/enseignant/mescours"
               class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
               <i-feather name="box" class="feather-base me-16"></i-feather> <span class="ps-4">Mes cours</span>
+            </a>
+          </li>
+
+          <!--Lien pour les parent-->
+          <li class="list-group nav-item" *ngIf="userProfile == 'parent'">
+            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/parent/mescours"
+              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
+              <i-feather name="box" class="feather-base me-16"></i-feather> <span class="ps-4">Mes élèves</span>
             </a>
           </li>
         </ul>
@@ -141,8 +179,8 @@
         </button>
         <mat-menu #menu="matMenu" class="profile-dropdown">
           <div class="p-16 mb-4">
-            <button mat-menu-item class="fs-16" routerLink="/dashboard/mon-profil">Edit Profile</button>
-            <button mat-menu-item class="fs-16" routerLink="/dashboard/change-pwd">Changer Mot de passe</button>
+            <button mat-menu-item class="fs-16" routerLink="/shared/mon-profile">Edit Profile</button>
+            <button mat-menu-item class="fs-16" routerLink="/shared/change-pwd">Changer Mot de passe</button>
           </div>
 
           <hr>

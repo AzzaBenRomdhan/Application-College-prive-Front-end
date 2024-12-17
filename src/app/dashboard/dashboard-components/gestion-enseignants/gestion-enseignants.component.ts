@@ -43,10 +43,20 @@ export class GestionEnseignantsComponent implements OnInit{
       width: '600px' 
     });
   }
-  modifierEnseignant(){
-    this.dialog.open(ModifierEnseignantComponent, {
-      width: '600px' 
-    });
+
+  modifierEnseignant(user:any) {
+      const dialogRef= this.dialog.open(ModifierEnseignantComponent, {
+        width: '600px' ,
+        data: user
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log("Utilisateur modifé!");
+          window.location.reload();
+        } else {
+          console.log("Modification annulée");
+        }
+      });
   }
   openConfirmationDialog(id: any): void {
     const dialogRef = this.dialog.open(ConfirmationSuppressionComponent, {

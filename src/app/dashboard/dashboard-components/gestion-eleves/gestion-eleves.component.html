@@ -6,29 +6,26 @@
     <h2>Gestion des Élèves</h2>
     
     <!-- Barre de recherche et filtres -->
-    <div class="filters">
-        <input type="text" class="search-bar" placeholder="Rechercher un élève...">
-        <select class="filter-dropdown">
-            <option value="">Filtrer par classe</option>
-            <option value="classe1">Classe 1</option>
-            <option value="classe2">Classe 2</option>
-            <option value="classe3">Classe 3</option>
-        </select>
-        <button class="filter-button">Filtrer</button>
-    </div>
+<div class="filters">
+  <input type="text" class="search-bar" placeholder="Rechercher un élève...">
+
+  <select class="filter-dropdown" [(ngModel)]="selectedClasse" (change)="filterByClasse()">
+    <option value="">Filtrer par classe</option>
+    <option *ngFor="let classe of classes" [value]="classe.nomclasse">{{classe.nomclasse}}</option>
+  </select>
+</div>
+
 
     <!-- Tableau -->
     <ul class="responsive-table">
         <li class="table-header">
-          <div class="col col-1">ID</div>
-          <div class="col col-2">Nom</div>
+          <div class="col col-2">Nom complet</div>
           <div class="col col-3">Classe</div>
           <div class="col col-4">Actions</div>
         </li>
       
         <!-- Itération sur la liste des utilisateurs -->
-        <li *ngFor="let user of users" class="table-row">
-          <div class="col col-1" data-label="ID">{{ user.id }}</div>
+        <li *ngFor="let user of filtredUsers" class="table-row">
           <div class="col col-2" data-label="Nom">{{ user.nom }} {{ user.prenom }}</div>
           <div class="col col-3" data-label="Classe" *ngIf="user?.classe?.nomclasse">{{ user.classe.nomclasse }}</div>
           <div class="col col-4" data-label="Actions">

@@ -25,15 +25,16 @@ import { GestionActualitesComponent } from './dashboard/dashboard-components/ges
 import { GestionClassComponent } from './dashboard/dashboard-components/gestion-class/gestion-class.component';
 import { GestionReclamationComponent } from './dashboard/dashboard-components/gestion-reclamation/gestion-reclamation.component';
 import { GestionDisciplineComponent } from './dashboard/dashboard-components/gestion-discipline/gestion-discipline.component';
-import { ChangerMotDePassComponent } from './profil/changer-mot-de-pass/changer-mot-de-pass.component';
-import { MonProfilComponent } from './profil/mon-profil/mon-profil.component';
-import { HomeParentComponent } from './dashboard/dashboard-components/home-parent/home-parent.component';
+import { ChangerMotDePassComponent } from './shared/changer-mot-de-pass/changer-mot-de-pass.component';
+import { MonProfilComponent } from './shared/mon-profil/mon-profil.component';
 import { HomeEleveComponent } from './eleve/home-eleve/home-eleve.component';
 import { HomeEnseignantComponent } from './enseignant/home-enseignant/home-enseignant.component';
 import { GestionSallesComponent } from './dashboard/dashboard-components/gestion-salles/gestion-salles.component';
 import { GestionMatiereComponent } from './dashboard/dashboard-components/gestion-matiere/gestion-matiere.component';
 import { GestionClendrierComponent } from './dashboard/dashboard-components/gestion-clendrier/gestion-clendrier.component';
 import { HomeMoyenneEtNoteComponent } from './dashboard/dashboard-components/GestionMoyenneEtNote/home-moyenne-et-note/home-moyenne-et-note.component';
+import { HomeParentComponent } from './parent/home-parent/home-parent.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 const routes: Routes = [
   {
@@ -54,10 +55,25 @@ const routes: Routes = [
       //canActivate: [authGuard, AgentGuard]
   },
   {
+    path : 'parent',
+    component:NavbarComponent,loadChildren:() => 
+      import('./parent/parent.module').then(
+        (m) => m.ParentModule
+      ),
+      //canActivate: [authGuard, AgentGuard]
+  },
+  {
     path : 'enseignant',
     component:FullComponent,loadChildren:() => 
       import('./enseignant/enseignant.module').then(
         (m) => m.EnseignantModule
+      ),
+      //canActivate: [authGuard, AgentGuard]
+  },
+  {
+    path : 'shared',loadChildren:() => 
+      import('./shared/shared.module').then(
+        (m) => m.SharedModule
       ),
       //canActivate: [authGuard, AgentGuard]
   },
@@ -73,8 +89,6 @@ const routes: Routes = [
       {path:"classes", component:GestionClassComponent},
       {path:"reclamations", component:GestionReclamationComponent},
       {path:"discipline", component:GestionDisciplineComponent},
-      {path:"mon-profil", component:MonProfilComponent},
-      {path:'change-pwd', component:ChangerMotDePassComponent},
       {path:"home-parent", component:HomeParentComponent},
       {path:"home-eleve", component:HomeEleveComponent},
       {path:"home-enseignant", component:HomeEnseignantComponent},
