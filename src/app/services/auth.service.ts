@@ -57,7 +57,7 @@ export class AuthService {
     // Logique de redirection en fonction du profil
     switch (profil) {
       case 'eleve':
-        this.router.navigate(['/dashboard/home-eleve']);
+        this.router.navigate(['/eleve/home-eleve']);
         break;
       case 'admin':
         case 'Admin':

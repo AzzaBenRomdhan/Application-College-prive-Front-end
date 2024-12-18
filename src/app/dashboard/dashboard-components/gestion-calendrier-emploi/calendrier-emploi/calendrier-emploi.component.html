@@ -1,0 +1,10 @@
+ 
+<div class="dashboard">
+    <div class="card" *ngFor="let item of menuItems" (click)="handleMenuClick(item)">
+      <i class="{{ item.icon }}"></i>
+      <span>{{ item.name }}</span>
+    </div>
+</div>
+
+<app-gestion-emploi *ngIf="showEmploiForm"></app-gestion-emploi>
+<app-gestion-clendrier *ngIf="showCalendrierForm"></app-gestion-clendrier>

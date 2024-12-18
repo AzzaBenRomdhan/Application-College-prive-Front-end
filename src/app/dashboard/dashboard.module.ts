@@ -37,11 +37,13 @@ import { HomeEleveComponent } from '../eleve/home-eleve/home-eleve.component';
 import { GestionSallesComponent } from './dashboard-components/gestion-salles/gestion-salles.component';
 import { ModiferSalleComponent } from './dashboard-components/gestion-salles/modifer-salle/modifer-salle.component';
 import { GestionMatiereComponent } from './dashboard-components/gestion-matiere/gestion-matiere.component';
-import { GestionClendrierComponent } from './dashboard-components/gestion-clendrier/gestion-clendrier.component';
+import { GestionClendrierComponent } from './dashboard-components/gestion-calendrier-emploi/gestion-clendrier/gestion-clendrier.component';
 import { HomeMoyenneEtNoteComponent } from './dashboard-components/GestionMoyenneEtNote/home-moyenne-et-note/home-moyenne-et-note.component';
 import { NotesDetailsComponent } from './dashboard-components/GestionMoyenneEtNote/notes-details/notes-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from '../parent/profile/profile.component';
+import { CalendrierEmploiComponent } from './dashboard-components/gestion-calendrier-emploi/calendrier-emploi/calendrier-emploi.component';
+import { GestionEmploiComponent } from './dashboard-components/gestion-calendrier-emploi/gestion-emploi/gestion-emploi.component';
 
 
 
@@ -85,6 +87,8 @@ import { ProfileComponent } from '../parent/profile/profile.component';
     HomeMoyenneEtNoteComponent,
     NotesDetailsComponent,
     ProfileComponent,
+    CalendrierEmploiComponent,
+    GestionEmploiComponent,
   ],
   imports: [
     CommonModule,

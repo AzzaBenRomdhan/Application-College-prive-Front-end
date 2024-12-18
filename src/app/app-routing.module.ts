@@ -25,16 +25,12 @@ import { GestionActualitesComponent } from './dashboard/dashboard-components/ges
 import { GestionClassComponent } from './dashboard/dashboard-components/gestion-class/gestion-class.component';
 import { GestionReclamationComponent } from './dashboard/dashboard-components/gestion-reclamation/gestion-reclamation.component';
 import { GestionDisciplineComponent } from './dashboard/dashboard-components/gestion-discipline/gestion-discipline.component';
-import { ChangerMotDePassComponent } from './shared/changer-mot-de-pass/changer-mot-de-pass.component';
-import { MonProfilComponent } from './shared/mon-profil/mon-profil.component';
-import { HomeEleveComponent } from './eleve/home-eleve/home-eleve.component';
 import { HomeEnseignantComponent } from './enseignant/home-enseignant/home-enseignant.component';
 import { GestionSallesComponent } from './dashboard/dashboard-components/gestion-salles/gestion-salles.component';
 import { GestionMatiereComponent } from './dashboard/dashboard-components/gestion-matiere/gestion-matiere.component';
-import { GestionClendrierComponent } from './dashboard/dashboard-components/gestion-clendrier/gestion-clendrier.component';
 import { HomeMoyenneEtNoteComponent } from './dashboard/dashboard-components/GestionMoyenneEtNote/home-moyenne-et-note/home-moyenne-et-note.component';
-import { HomeParentComponent } from './parent/home-parent/home-parent.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { CalendrierEmploiComponent } from './dashboard/dashboard-components/gestion-calendrier-emploi/calendrier-emploi/calendrier-emploi.component';
 
 const routes: Routes = [
   {
@@ -48,7 +44,7 @@ const routes: Routes = [
   },
   {
     path : 'eleve',
-    component:FullComponent,loadChildren:() => 
+    component:NavbarComponent,loadChildren:() => 
       import('./eleve/eleve.module').then(
         (m) => m.EleveModule
       ),
@@ -89,8 +85,6 @@ const routes: Routes = [
       {path:"classes", component:GestionClassComponent},
       {path:"reclamations", component:GestionReclamationComponent},
       {path:"discipline", component:GestionDisciplineComponent},
-      {path:"home-parent", component:HomeParentComponent},
-      {path:"home-eleve", component:HomeEleveComponent},
       {path:"home-enseignant", component:HomeEnseignantComponent},
       {path:"home", component:DashboardComponent},
       {path:"salles-departements", component:GestionSallesComponent},
@@ -99,7 +93,7 @@ const routes: Routes = [
       {path:"forms", component:FormsComponent},
       {path:"enseignants", component:FormsComponent},
       {path:"matieres", component:GestionMatiereComponent},
-      {path:"calendrier", component:GestionClendrierComponent},
+      {path:"calendrier-emploi", component:CalendrierEmploiComponent},
       {path:"prospects", component:ProductComponent},
       {path:"grid-list", component:GridListComponent},
       {path:"menu", component:MenuComponent},

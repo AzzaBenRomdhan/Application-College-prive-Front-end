@@ -9,13 +9,15 @@ import { TawasalnaModule } from '../tawasalna-module';
 import { NoteEtMoyenneComponent } from './note-et-moyenne/note-et-moyenne.component';
 import { NoteDetailsComponent } from './note-details/note-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { ActualitesComponent } from './actualites/actualites.component';
 
 
 @NgModule({
   declarations: [
     MesCoursComponent,
     NoteEtMoyenneComponent,
-    NoteDetailsComponent
+    NoteDetailsComponent,
+    ActualitesComponent
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,4 @@
+
 <div class="container">
     <mat-card>
       <mat-card-title>Création de l'emploi du temps</mat-card-title>
@@ -18,7 +19,7 @@
   
         <!-- Email -->
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>Email élève</mat-label>
           <input matInput type="email" formControlName="email" required />
           <mat-error *ngIf="emploiForm.get('email')?.hasError('required')">L'email est requis.</mat-error>
           <mat-error *ngIf="emploiForm.get('email')?.hasError('email')">L'email n'est pas valide.</mat-error>

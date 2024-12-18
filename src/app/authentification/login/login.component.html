@@ -28,7 +28,7 @@
                      [(ngModel)]="password" 
                      name="password" 
                      required />
-              <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+              <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility()">
                 <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
               </button>
             </mat-form-field>
