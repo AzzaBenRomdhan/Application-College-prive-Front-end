@@ -13,6 +13,8 @@ export class NavbarComponent  implements OnInit{
   routerActive: string = "activelink";
   userProfile: string = localStorage.getItem('userProfile') || '';
   userName: string = ''; 
+  classe: string = ''; 
+
 
   constructor(private breakpointObserver: BreakpointObserver,
     private router:Router, private userService: UserService      
@@ -24,6 +26,7 @@ export class NavbarComponent  implements OnInit{
       this.userService.userbyemail(email).subscribe({
         next: (user) => {
           this.userName = `${user.nom} ${user.prenom}`;
+          this.classe= `${user.classe.nomclasse}`
         },
         error: (err) => {
           console.error('Erreur lors de la récupération de l\'utilisateur :', err);

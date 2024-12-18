@@ -44,7 +44,11 @@ import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from '../parent/profile/profile.component';
 import { CalendrierEmploiComponent } from './dashboard-components/gestion-calendrier-emploi/calendrier-emploi/calendrier-emploi.component';
 import { GestionEmploiComponent } from './dashboard-components/gestion-calendrier-emploi/gestion-emploi/gestion-emploi.component';
-
+import { CreateMenuComponent } from './dashboard-components/gestion-Menu/create-menu/create-menu.component';
+import { AcceuilComponent } from './dashboard-components/gestion-Menu/acceuil/acceuil.component';
+import { ListeDesMenuComponent } from './dashboard-components/gestion-Menu/liste-des-menu/liste-des-menu.component';
+import { ListeDesReservationComponent } from './dashboard-components/gestion-Menu/liste-des-reservation/liste-des-reservation.component';
+import { ModiferMenuComponent } from './dashboard-components/gestion-Menu/modifer-menu/modifer-menu.component';
 
 
 @NgModule({
@@ -89,6 +93,11 @@ import { GestionEmploiComponent } from './dashboard-components/gestion-calendrie
     ProfileComponent,
     CalendrierEmploiComponent,
     GestionEmploiComponent,
+    CreateMenuComponent,
+    AcceuilComponent,
+    ListeDesMenuComponent,
+    ListeDesReservationComponent,
+    ModiferMenuComponent,
   ],
   imports: [
     CommonModule,
@@ -96,7 +105,7 @@ import { GestionEmploiComponent } from './dashboard-components/gestion-calendrie
     NgApexchartsModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [
     DashboardComponent,

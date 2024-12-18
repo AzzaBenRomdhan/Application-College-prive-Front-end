@@ -31,6 +31,7 @@ import { GestionMatiereComponent } from './dashboard/dashboard-components/gestio
 import { HomeMoyenneEtNoteComponent } from './dashboard/dashboard-components/GestionMoyenneEtNote/home-moyenne-et-note/home-moyenne-et-note.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CalendrierEmploiComponent } from './dashboard/dashboard-components/gestion-calendrier-emploi/calendrier-emploi/calendrier-emploi.component';
+import { AcceuilComponent } from './dashboard/dashboard-components/gestion-Menu/acceuil/acceuil.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,7 @@ const routes: Routes = [
       {path:"home", component:DashboardComponent},
       {path:"salles-departements", component:GestionSallesComponent},
       {path:"moyennes-notes/:id", component:HomeMoyenneEtNoteComponent},
+      {path:"gestion-menu", component:AcceuilComponent},
       {path:"alerts", component:AlertsComponent},
       {path:"forms", component:FormsComponent},
       {path:"enseignants", component:FormsComponent},

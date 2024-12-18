@@ -10,7 +10,8 @@
       <button mat-button class="fs-16 pt-4 pb-4 ps-8 pe-8 text-light-muted" [matMenuTriggerFor]="menu">
         <img src="assets/images/userProfile.jpg" class="image--cover" alt="User Profile">
         <span class="fw-light ms-8 text-secondary">Bonjour,</span>
-        <span class="fw-bold ms-8">{{ userName }}</span>
+        <span class="fw-bold ms-8 me-2">{{ userName }}</span>
+        <span class="fw-light ms-8 me-2 text-secondary" *ngIf="userProfile == 'eleve'"><strong>{{classe}}</strong></span>
         <i-feather name="chevron-down" class="feather-base mt-n2"></i-feather>
       </button>
       <mat-menu #menu="matMenu" class="profile-dropdown">

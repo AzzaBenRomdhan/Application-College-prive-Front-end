@@ -12,7 +12,7 @@ export class HomeEleveComponent {
   menuItems = [
     { name: 'Cours', icon: 'fas fa-book', route: 'eleve/mescours' },
     { name: 'Moyennes', icon: 'fas fa-chart-line', route: '/eleve/notes-moyenne' },
-    { name: 'Menu', icon: 'fas fa-utensils', route: '/menu' },
+    { name: 'Menu', icon: 'fas fa-utensils', route: '/eleve/menu' },
     { name: 'Réclamation', icon: 'fas fa-comments', route: '/reclamation' },
     { name: 'Emploi du Temps', icon: 'fas fa-calendar-alt', route: '/emploi-du-temps' },
     { name: 'Calendrier Examen', icon: 'fas fa-calendar-check', route: '/calendrier-examen' }

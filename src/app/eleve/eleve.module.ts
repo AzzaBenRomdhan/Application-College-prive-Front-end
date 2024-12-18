@@ -10,6 +10,7 @@ import { NoteEtMoyenneComponent } from './note-et-moyenne/note-et-moyenne.compon
 import { NoteDetailsComponent } from './note-details/note-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { ActualitesComponent } from './actualites/actualites.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ActualitesComponent } from './actualites/actualites.component';
     MesCoursComponent,
     NoteEtMoyenneComponent,
     NoteDetailsComponent,
-    ActualitesComponent
+    ActualitesComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,

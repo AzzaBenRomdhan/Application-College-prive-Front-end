@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MesCoursComponent } from './mes-cours/mes-cours.component';
 import { NoteEtMoyenneComponent } from './note-et-moyenne/note-et-moyenne.component';
 import { HomeEleveComponent } from './home-eleve/home-eleve.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
     children: [
       { path: 'home-eleve', component: HomeEleveComponent },
       { path: 'mescours', component: MesCoursComponent },
-      { path: 'notes-moyenne', component: NoteEtMoyenneComponent }
+      { path: 'notes-moyenne', component: NoteEtMoyenneComponent },
+      { path: 'menu', component: MenuComponent }
     ]
   }
 ];
