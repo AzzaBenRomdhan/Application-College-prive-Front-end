@@ -1,48 +1,79 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DisciplineService } from 'src/app/services/discipline.service';
 
 @Component({
   selector: 'app-gestion-discipline',
   templateUrl: './gestion-discipline.component.html',
   styleUrls: ['./gestion-discipline.component.scss']
 })
-export class GestionDisciplineComponent {
-  students = [
-    { name: 'John Doe', reason: 'Manque de respect', status: 'eliminated', date: '2024-12-01' },
-    { name: 'Jane Smith', reason: 'Violence', status: 'eliminated', date: '2024-12-02' },
-    // Ajouter d'autres élèves
-  ];
-
-  displayedColumns: string[] = ['name', 'reason', 'status', 'action'];
-
-  selectedStudent: any;
+export class GestionDisciplineComponent implements OnInit{
+  disciplines: any[] = [];
+  displayedColumns: string[] = ['eleve', 'enseignant', 'status', 'action'];
+  selectedDiscipline: any = null;
   response: string = '';
+  status: string = '';
+  constructor(private disciplineService: DisciplineService) {}
 
-  convocationParent(student: any) {
-    // Logique pour convocation des parents
-    // Vous pouvez afficher un formulaire, envoyer une notification ou un email, etc.
-    console.log('Convocation envoyée pour', student.name);
+  ngOnInit(): void {
+    this.getAllDisciplines();
   }
 
-  reinstateStudent(student: any) {
-    // Réintégrer l'élève
-    student.status = 'not-eliminated';
+  getAllDisciplines() {
+    this.disciplineService.getDisciplines().subscribe(
+      (response: any[]) => {
+        this.disciplines = response.filter((discipline:any) => discipline.statusDisc ==="PENDING_APPROVAL");
+        console.log('Liste récupérée avec succès', response);
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des données', error);
+      }
+    );
+  }
+  
+  removeDiscipline(discipline: any) {
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir suprimer cette discipline ?');
+    if(confirmation){
+    this.disciplineService.deleteDiscipline(discipline.id).subscribe(
+      () => {
+        this.disciplines = this.disciplines.filter(d => d.id !== discipline.id);
+        console.log(`Discipline de l'élève ${discipline.eleve.nom} supprimée.`);
+      },
+      (error) => {
+        console.error('Erreur lors de la suppression de la discipline', error);
+      }
+    );
+   } else {
+    console.log("supprission annulé");
+   }
   }
 
-  removeStudent(student: any) {
-    // Supprimer l'élève de la liste
-    const index = this.students.findIndex(s => s.name === student.name);
-    if (index !== -1) {
-      this.students.splice(index, 1);
-      // Réaffecter la liste pour forcer la mise à jour
-      this.students = [...this.students];
-      // S'assurer que la suppression est bien prise en compte
-      console.log(`L'élève ${student.name} a été supprimé.`);
+cancel(){
+  this.selectedDiscipline = null;
+}
+  submitResponse() {
+    if (this.selectedDiscipline) {
+      const status = this.status; 
+      const adminComment = this.response;
+      const confirmation = window.confirm('Êtes-vous sûr d\'envoyer cette réponse ?');
+      if(confirmation){
+        this.disciplineService.validerOuRefuser(this.selectedDiscipline.id, status, adminComment).subscribe(
+          () => {
+            console.log(`Réponse envoyée pour ${this.selectedDiscipline.eleve.nom}`);
+            this.response = '';
+            this.selectedDiscipline = null;
+          },
+          (error) => {
+            console.error('Erreur lors de l\'envoi de la réponse', error);
+          }
+        );
+      } else {
+        console.error('Envoie annulé');
+      }
+      
     }
   }
-
-  submitResponse() {
-    // Soumettre la réponse de l'admin
-    this.selectedStudent.response = this.response;
-    this.response = '';
+  
+  openDisciplineDetails(discipline: any) {
+    this.selectedDiscipline = discipline;
   }
 }
