@@ -14,19 +14,19 @@ export class HomeEleveComponent {
     { name: 'Moyennes', icon: 'fas fa-chart-line', route: '/eleve/notes-moyenne' },
     { name: 'Menu', icon: 'fas fa-utensils', route: '/eleve/menu' },
     { name: 'Réclamation', icon: 'fas fa-comments', route: '/reclamation' },
+    { name: 'Discipline', icon: 'fas fa-calendar-alt', route: 'eleve/discipline-eleve' },
     { name: 'Emploi du Temps', icon: 'fas fa-calendar-alt', route: '/emploi-du-temps' },
     { name: 'Calendrier Examen', icon: 'fas fa-calendar-check', route: '/calendrier-examen' }
   ];
   
-  
-navigateTo(route: string) {
-    this.router.navigate([route]);
-}
-handleMenuClick(item:any): void{
-  if(item.action){
-    item.action();
-  } else if (item.route) {
-    this.navigateTo(item.route)
+  navigateTo(route: string) {
+      this.router.navigate([route]);
   }
-}
+  handleMenuClick(item:any): void{
+    if(item.action){
+      item.action();
+    } else if (item.route) {
+      this.navigateTo(item.route)
+    }
+  }
 }

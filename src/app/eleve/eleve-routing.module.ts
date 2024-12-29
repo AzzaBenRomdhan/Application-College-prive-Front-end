@@ -4,6 +4,7 @@ import { MesCoursComponent } from './mes-cours/mes-cours.component';
 import { NoteEtMoyenneComponent } from './note-et-moyenne/note-et-moyenne.component';
 import { HomeEleveComponent } from './home-eleve/home-eleve.component';
 import { MenuComponent } from './menu/menu.component';
+import { DisciplineComponent } from './discipline/discipline.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
       { path: 'home-eleve', component: HomeEleveComponent },
       { path: 'mescours', component: MesCoursComponent },
       { path: 'notes-moyenne', component: NoteEtMoyenneComponent },
-      { path: 'menu', component: MenuComponent }
+      { path: 'menu', component: MenuComponent },
+      { path: 'discipline-eleve', component: DisciplineComponent }
     ]
   }
 ];
