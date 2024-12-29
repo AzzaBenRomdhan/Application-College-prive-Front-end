@@ -9,6 +9,7 @@ import { FeatherModule } from 'angular-feather';
 import { MesElevesComponent } from './mes-eleves/mes-eleves.component';
 import { SharedModule } from '../shared/shared.module';
 import { SelectionEleveComponent } from './selection-eleve/selection-eleve.component';
+import { DisciplineComponent } from './discipline/discipline.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SelectionEleveComponent } from './selection-eleve/selection-eleve.compo
     HomeParentComponent,
     MoyenneEtNoteComponent,
     MesElevesComponent,
-    SelectionEleveComponent
+    SelectionEleveComponent,
+    DisciplineComponent
   ],
   imports: [
     CommonModule,

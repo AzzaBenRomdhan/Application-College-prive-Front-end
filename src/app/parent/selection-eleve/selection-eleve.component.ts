@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ParentService } from 'src/app/services/parent.service';
 
 @Component({
@@ -10,16 +9,24 @@ import { ParentService } from 'src/app/services/parent.service';
 })
 export class SelectionEleveComponent {
   students: any[] = [];
+  targetRoute: string = '';
 
-  constructor(private parentService: ParentService, private router: Router) {}
+  constructor(
+    private parentService: ParentService, 
+    public dialogRef: MatDialogRef<SelectionEleveComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { targetRoute: string }) {
+      this.targetRoute = data.targetRoute;
+    }
 
   ngOnInit(): void {
-   const emailParent = localStorage.getItem('email'); 
-    console.log("this is my email ^parent", emailParent);
+    const emailParent = localStorage.getItem('email');
+    console.log("Email parent:", emailParent);
+
+    // Récupération des élèves via le service parent
     this.parentService.getMesEleves(emailParent!).subscribe(
       (data) => {
         this.students = data;
-        console.log("mes eleves", data)
+        console.log("Mes élèves:", data);
       },
       (error) => {
         console.error('Erreur lors du chargement des élèves :', error);
@@ -29,7 +36,10 @@ export class SelectionEleveComponent {
 
   selectStudent(student: any): void {
     console.log('Élève sélectionné :', student);
-    this.router.navigate(["/parent/moyenne-note", student.eleve.id]);
-
+    if (student) {
+      this.dialogRef.close(student); // Ferme le dialogue et renvoie l'élève sélectionné
+    } else {
+      console.error("Aucun élève sélectionné");
+    }
   }
 }

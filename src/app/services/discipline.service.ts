@@ -34,8 +34,15 @@ export class DisciplineService {
 
   // Lister les disciplines pour un enseignant
   listDisciplinesByEnseignant(enseignantId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/list`, {
+    return this.http.get(`${this.baseUrl}/byEnseignant`, {
       params: { enseignantId: enseignantId.toString() }
+    });
+  }
+
+  // Lister les disciplines pour un eleve
+  getDisciplinesByStudentId(eleveId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/byeleve`, {
+      params: { eleveId: eleveId.toString() }
     });
   }
 
