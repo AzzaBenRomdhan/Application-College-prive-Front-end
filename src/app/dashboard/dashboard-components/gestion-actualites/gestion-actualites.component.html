@@ -1,90 +1,31 @@
-<!-- Section Titre et Bouton "Ajouter une nouvelle publication" -->
-<div class="new-post-header">
-    <h3>Gestion des Publications</h3>
-</div>
-  
-  <mat-stepper linear #stepper>
-    <!-- Step 1: Titre et Description -->
-    <mat-step>
-      <ng-template matStepLabel>Step 1: Titre et Description</ng-template>
-      <div class="form-step">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Titre de l'offre</mat-label>
-          <input matInput type="text" name="title" required>
-        </mat-form-field>
-    
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Description de l'offre</mat-label>
-          <textarea matInput name="description" rows="4" required></textarea>
-        </mat-form-field>
-      </div>
-      <div class="step-actions">
-        <button mat-button type="button" matStepperNext>Suivant</button>
-      </div>
-    </mat-step>
-    
-    <!-- Step 2: Type d'Offre et Icône -->
-    <mat-step>
-      <ng-template matStepLabel>Step 2: Type d'Offre et Icône</ng-template>
-      <div class="row">
-        <div class="col-lg-6">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>Type d'offre</mat-label>
-            <mat-select name="offerType" required>
-              <mat-option value="announcement">Annonce</mat-option>
-              <mat-option value="event">Événement</mat-option>
-              <mat-option value="news">Actualité</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-lg-6">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label>Choisir une icône</mat-label>
-            <mat-select name="icon" required>
-              <mat-option value="announcement_icon">📢 Annonce</mat-option>
-              <mat-option value="event_icon">🎉 Événement</mat-option>
-              <mat-option value="news_icon">📰 Actualité</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      <div>
-        <button mat-button type="button" matStepperPrevious>Retour</button>
-        <button mat-button type="button" matStepperNext>Suivant</button>
-      </div>
-    </mat-step>
-    
-    <!-- Step 3: Confirmation -->
-    <mat-step>
-      <ng-template matStepLabel>Step 3: Confirmation</ng-template>
-      <div class="form-step">
-        <p>Vous êtes sur le point de publier l'offre.</p>
-      </div>
-      <div class="step-actions">
-        <button mat-button type="button" matStepperPrevious>Retour</button>
-        <button mat-raised-button color="primary" type="submit">Publier l'Offre</button>
-      </div>
-    </mat-step>
-  </mat-stepper>
-  
-  <!-- Section pour les anciennes publications -->
-  <div class="previous-posts-section">
-    <h3 class="section-title">Anciennes Publications</h3>
-    <div class="post-cards-container">
-      <div *ngFor="let post of previousPosts" class="post-card">
-        <div class="post-icon">
-          <mat-icon>{{ post.icon }}</mat-icon>
-        </div>
-        <div class="post-content">
-          <h4>{{ post.title }}</h4>
-          <p>{{ post.description }}</p>
-          <small>{{ post.date }}</small>
-        </div>
-        <div class="post-actions">
-          <button mat-button>Modifier</button>
-          <button mat-button>Supprimer</button>
-        </div>
-      </div>
-    </div>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="titre">Titre:</label>
+    <input type="text" id="titre" [(ngModel)]="titre" name="titre" required />
   </div>
-  
+
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
+  </div>
+
+  <div>
+    <label for="cible">Cible:</label>
+    <select id="cible" [(ngModel)]="cible" name="cible" required>
+      <option value="eleve">Élève</option>
+      <option value="enseignant">Enseignant</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="video">Vidéo (optionnel):</label>
+    <input type="file" id="video" (change)="onVideoChange($event)" />
+  </div>
+
+  <div>
+    <label for="fichier">Fichier (optionnel):</label>
+    <input type="file" id="fichier" (change)="onFichierChange($event)" />
+  </div>
+
+  <button type="submit">Créer l'actualité</button>
+</form>

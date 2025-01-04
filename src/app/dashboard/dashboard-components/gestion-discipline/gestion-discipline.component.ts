@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DisciplineService } from 'src/app/services/discipline.service';
+import { DetaillsDisciplineComponent } from './detaills-discipline/detaills-discipline.component';
 
 @Component({
   selector: 'app-gestion-discipline',
@@ -12,7 +14,7 @@ export class GestionDisciplineComponent implements OnInit{
   selectedDiscipline: any = null;
   response: string = '';
   status: string = '';
-  constructor(private disciplineService: DisciplineService) {}
+  constructor(private disciplineService: DisciplineService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getAllDisciplines();
@@ -50,30 +52,30 @@ export class GestionDisciplineComponent implements OnInit{
 cancel(){
   this.selectedDiscipline = null;
 }
-  submitResponse() {
-    if (this.selectedDiscipline) {
-      const status = this.status; 
-      const adminComment = this.response;
-      const confirmation = window.confirm('Êtes-vous sûr d\'envoyer cette réponse ?');
-      if(confirmation){
-        this.disciplineService.validerOuRefuser(this.selectedDiscipline.id, status, adminComment).subscribe(
-          () => {
-            console.log(`Réponse envoyée pour ${this.selectedDiscipline.eleve.nom}`);
-            this.response = '';
-            this.selectedDiscipline = null;
-          },
-          (error) => {
-            console.error('Erreur lors de l\'envoi de la réponse', error);
-          }
-        );
-      } else {
-        console.error('Envoie annulé');
-      }
-      
-    }
-  }
+
   
   openDisciplineDetails(discipline: any) {
     this.selectedDiscipline = discipline;
   }
+  openDisciplineDetailsInDialog(discipline: any) {
+    const dialogRef = this.dialog.open(DetaillsDisciplineComponent, {
+      data: { 
+        id: discipline.id,
+        eleve: discipline.eleve,
+        cause: discipline.cause,
+        date: discipline.date,
+        status: discipline.statusDisc,
+        response: ''
+      },
+      width: '400px',
+    });
+  
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.status = result.status;
+        this.response = result.response;
+      }
+    });
+  }
+  
 }

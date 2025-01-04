@@ -49,6 +49,7 @@ import { AcceuilComponent } from './dashboard-components/gestion-Menu/acceuil/ac
 import { ListeDesMenuComponent } from './dashboard-components/gestion-Menu/liste-des-menu/liste-des-menu.component';
 import { ListeDesReservationComponent } from './dashboard-components/gestion-Menu/liste-des-reservation/liste-des-reservation.component';
 import { ModiferMenuComponent } from './dashboard-components/gestion-Menu/modifer-menu/modifer-menu.component';
+import { DetaillsDisciplineComponent } from './dashboard-components/gestion-discipline/detaills-discipline/detaills-discipline.component';
 
 
 @NgModule({
@@ -98,6 +99,7 @@ import { ModiferMenuComponent } from './dashboard-components/gestion-Menu/modife
     ListeDesMenuComponent,
     ListeDesReservationComponent,
     ModiferMenuComponent,
+    DetaillsDisciplineComponent,
   ],
   imports: [
     CommonModule,
