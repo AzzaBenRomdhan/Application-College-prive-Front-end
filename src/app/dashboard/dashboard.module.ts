@@ -50,6 +50,7 @@ import { ListeDesMenuComponent } from './dashboard-components/gestion-Menu/liste
 import { ListeDesReservationComponent } from './dashboard-components/gestion-Menu/liste-des-reservation/liste-des-reservation.component';
 import { ModiferMenuComponent } from './dashboard-components/gestion-Menu/modifer-menu/modifer-menu.component';
 import { DetaillsDisciplineComponent } from './dashboard-components/gestion-discipline/detaills-discipline/detaills-discipline.component';
+import { AddActualiteComponent } from './dashboard-components/gestion-actualites/add-actualite/add-actualite.component';
 
 
 @NgModule({
@@ -100,6 +101,7 @@ import { DetaillsDisciplineComponent } from './dashboard-components/gestion-disc
     ListeDesReservationComponent,
     ModiferMenuComponent,
     DetaillsDisciplineComponent,
+    AddActualiteComponent,
   ],
   imports: [
     CommonModule,

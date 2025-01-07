@@ -1,69 +1,121 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActualiesService } from 'src/app/services/actualies.service';
+import { AddActualiteComponent } from './add-actualite/add-actualite.component';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-gestion-actualites',
   templateUrl: './gestion-actualites.component.html',
   styleUrls: ['./gestion-actualites.component.scss']
 })
-export class GestionActualitesComponent {
-  /* previousPosts = [
-    {
-      title: 'Annonce : Nouvelle inscription',
-      description: 'Annonce concernant les nouvelles inscriptions pour l’année scolaire.',
-      icon: '📢',
-      date: '2024-12-01'
-    },
-    {
-      title: 'Événement : Fête de fin d’année',
-      description: 'Venez célébrer avec nous à la fête de fin d’année.',
-      icon: '🎉',
-      date: '2024-11-25'
-    },
-    {
-      title: 'Actualité : Résultats des examens',
-      description: 'Annonce des résultats des examens de cette session.',
-      icon: '📰',
-      date: '2024-11-10'
-    }
-  ];
+export class GestionActualitesComponent implements OnInit{
+  actualites: any[] = [];
+  page: number = 0;
+  size: number = 4;
+  totalActualites: number = 0;
+  totalPages: number = 0;  // Nombre total de pages pour la pagination
 
-  onSubmit(): void {
-    console.log('Offre publiée');
+  constructor(
+    private actualiteService: ActualiesService,
+    private dialog: MatDialog
+  ) {}
+
+  ngOnInit(): void {
+    this.loadActualites();
   }
- */
-  titre: string = '';
-  description: string = '';
-  cible: string = 'ELEVE';  // Exemple de cible (ELEVE, ENSEIGNANT, etc.)
-  video: File | null = null;
-  fichier: File | null = null;
 
-  constructor(private actualiteService: ActualiesService) {}
-
-  // Méthode pour gérer la soumission du formulaire
-  onSubmit(): void {
-    const actualite = {
-      titre: this.titre,
-      description: this.description,
-      cible: this.cible
-    };
-
-    this.actualiteService.createActualite(actualite, this.video, this.fichier).subscribe({
-      next: (response) => {
-        console.log('Actualité créée avec succès', response);
+  loadActualites(): void {
+    this.actualiteService.getAllActualites(this.page, this.size).subscribe({
+      next: (response: any) => {
+        console.log('Réponse brute de l\'API :', response);
+        console.log('totalElements:', response.totalElements);  // Vérifiez la structure de la réponse
+        console.log('totalPages:', response.totalPages);  // Vérifiez la structure de la réponse
+  
+        // Vérification de la présence de content et pagination
+        if (response.content && response.totalElements !== undefined && response.totalPages !== undefined) {
+          this.actualites = response.content.map((item: any) => ({
+            id: item.id,
+            title: item.titre,
+            description: item.description,
+            date: item.datePublication,
+            videoUrl: '',
+            fichierUrl: item.fichierUrl || '',
+            icon: '📢',
+          }));
+  
+          // Charger les vidéos et les fichiers après avoir chargé les actualités
+          response.content.forEach((item: any) => {
+            if (item.videoUrl) {
+              this.getActualiteVideo(item.id);
+            }
+            if (item.fichierUrl) {
+              this.getActualiteFile(item.id);
+            }
+          });
+  
+          // Mise à jour des informations de pagination
+          this.totalActualites = response.totalElements;
+          this.totalPages = response.totalPages;
+  
+          console.log('Total des actualités:', this.totalActualites);
+          console.log('Nombre total de pages:', this.totalPages);
+        } else {
+          console.error('Erreur dans la structure de la réponse:', response);
+        }
       },
       error: (error) => {
-        console.error('Erreur lors de la création de l\'actualité', error);
-      }
+        console.error('Erreur lors du chargement des actualités', error);
+      },
     });
   }
+  
+  
 
-  // Méthodes pour gérer les fichiers téléchargés
-  onVideoChange(event: any): void {
-    this.video = event.target.files[0];
+  getActualiteVideo(id: number): void {
+    this.actualiteService.getActualiteViode(id).subscribe(
+      (videoUrl: string) => {
+        const actualite = this.actualites.find((item) => item.id === id);
+        if (actualite) {
+          actualite.videoUrl = videoUrl;
+        }
+      },
+      (error) => {
+        console.error(`Erreur lors du chargement de la vidéo pour l'actualité ${id}:`, error);
+      }
+    );
+  }
+  
+  getActualiteFile(id: number) {
+    this.actualiteService.getActualiteFile(id).subscribe(
+      (fileUrl: string) => {
+        const actualite = this.actualites.find(item => item.id === id);
+        if (actualite) {
+          actualite.fichierUrl = fileUrl;  // Utilisez l'URL blob générée
+        }
+      },
+      (error) => {
+        console.error(`Erreur lors du chargement du fichier pour l'actualité ${id}:`, error);
+      }
+    );
+  }
+  
+
+  nextPage(): void {
+    if (this.page < this.totalPages - 1) {
+      this.page++;  // Incrémenter la page
+      this.loadActualites();  // Recharger les actualités pour la nouvelle page
+    }
+  }
+  
+  prevPage(): void {
+    if (this.page > 0) {
+      this.page--;  // Décrémenter la page
+      this.loadActualites();  // Recharger les actualités pour la page précédente
+    }
   }
 
-  onFichierChange(event: any): void {
-    this.fichier = event.target.files[0];
+  openAddActualite(): void {
+    this.dialog.open(AddActualiteComponent);
   }
 }

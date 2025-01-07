@@ -1,32 +1,51 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActualiesService {
 
-  private apiUrl = 'http://localhost:8099/actualite'; // Remplace par l'URL de ton API Spring Boot
-
+  private apiUrl = 'http://localhost:8099/actualite';
   constructor(private http: HttpClient) { }
 
   // Méthode pour créer une actualité avec des fichiers
   createActualite(actualite: any, video: File | null, fichier: File | null): Observable<any> {
     const formData = new FormData();
-    
-    // Ajouter l'objet actualite (données JSON)
-    formData.append('actualite', JSON.stringify(actualite));
-    
-    // Ajouter les fichiers si présents
+  
+    formData.append('actualite', new Blob([JSON.stringify(actualite)], { type: 'application/json' })); // Force le type JSON
+  
     if (video) {
       formData.append('video', video, video.name);
     }
+  
     if (fichier) {
       formData.append('fichier', fichier, fichier.name);
     }
+  
+    return this.http.post<any>(this.apiUrl, formData); 
+  }
+  getAllActualites(page: number = 0, size: number = 10): Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
 
-    // Envoyer la requête POST avec 'form-data'
-    return this.http.post<any>(this.apiUrl, formData);
+    return this.http.get<any>(`${this.apiUrl}/all`, { params });
+  }
+
+  getActualiteViode(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}/video`, { responseType: 'blob' }).pipe(
+      map((blob: Blob) => {
+        return URL.createObjectURL(blob);
+      })
+    );
+  }
+  getActualiteFile(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}/file`, { responseType: 'blob' }).pipe(
+      map((blob: Blob) => {
+        return URL.createObjectURL(blob);
+      })
+    );
   }
 }

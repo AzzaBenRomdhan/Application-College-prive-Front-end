@@ -1,3 +1,4 @@
+//gestion actualité CSS
 /* Étape de formulaire */
 .form-step {
     margin-bottom: 20px;
@@ -16,10 +17,6 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-  }
-  
-  .previous-posts-section {
-    margin-top: 40px;
   }
   
   .section-title {
@@ -64,14 +61,44 @@
     color: #555;
     margin: 5px 0;
   }
-  
-  .post-actions {
+  .file-container {
+    margin: 10px 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
   }
   
-  button {
-    margin: 5px 0;
+  .file-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 100%;
+  }
+  
+  .file-icon {
+    font-size: 36px;
+    margin-right: 10px;
+  }
+  
+  .file-details {
+    flex: 1;
+  }
+  
+  .file-name {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .file-hint {
+    color: #666;
+    font-size: 0.85rem;
+  }
+  
+  .file-download-btn {
+    text-decoration: none;
   }
   
