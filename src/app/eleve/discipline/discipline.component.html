@@ -14,14 +14,16 @@
             
             <div *ngIf="discipline.videoPath">
               <p><strong>Vidéo:</strong></p>
-              <video width="420" height="340" controls *ngIf="disciplineVideos[discipline.id]">
+              <video width="500" height="340" controls *ngIf="disciplineVideos[discipline.id]">
                 <source [src]="disciplineVideos[discipline.id]" type="video/mp4">
                 Votre navigateur ne supporte pas la lecture de vidéos.
               </video>
             </div>
-            <p><strong>CauseEnseignant:</strong> {{ discipline.enseignant.nom }} {{ discipline.enseignant.prenom }}</p>
-            <p><strong>Cause:</strong> {{ discipline.cause }}</p>
-            <p><strong>Commentaire de l'administrateur:</strong> {{ discipline.adminComment }}</p>
+            <div class="details">
+              <p><strong>Enseignant:</strong> {{ discipline.enseignant.nom }} {{ discipline.enseignant.prenom }}</p>
+              <p><strong>Cause:</strong> {{ discipline.cause }}</p>
+              <p><strong>Commentaire de l'administrateur:</strong> {{ discipline.adminComment }}</p>
+            </div>
           </mat-card-content>
          </div>
         </mat-card>

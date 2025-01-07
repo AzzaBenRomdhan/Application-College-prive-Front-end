@@ -34,6 +34,15 @@ export class ActualiesService {
     return this.http.get<any>(`${this.apiUrl}/all`, { params });
   }
 
+  getActualitesByCible(profil: string, page: number = 0, size: number = 10): Observable<any> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString())
+      .set('profil', profil.toString());
+
+    return this.http.get<any>(`${this.apiUrl}/par-profil`, { params });
+  }
+
   getActualiteViode(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}/video`, { responseType: 'blob' }).pipe(
       map((blob: Blob) => {

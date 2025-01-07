@@ -15,8 +15,7 @@ export class HomeEleveComponent {
     { name: 'Menu', icon: 'fas fa-utensils', route: '/eleve/menu' },
     { name: 'Réclamation', icon: 'fas fa-comments', route: '/reclamation' },
     { name: 'Discipline', icon: 'fas fa-calendar-alt', route: 'eleve/discipline-eleve' },
-    { name: 'Emploi du Temps', icon: 'fas fa-calendar-alt', route: '/emploi-du-temps' },
-    { name: 'Calendrier Examen', icon: 'fas fa-calendar-check', route: '/calendrier-examen' }
+    { name: 'Actualité', icon: 'fas fa-bullhorn', route: 'eleve/actualites' },
   ];
   
   navigateTo(route: string) {

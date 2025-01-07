@@ -7,12 +7,12 @@ import { ActualiesService } from 'src/app/services/actualies.service';
   styleUrls: ['./actualites.component.scss']
 })
 export class ActualitesComponent {
-  actualites: any[] = [];
+ actualites: any[] = [];
   page: number = 0;
   size: number = 4;
   totalActualites: number = 0;
   totalPages: number = 0;
-  userProfile: string = localStorage.getItem('userProfile') || 'eleve';  // Profil par défaut 'eleve'
+  userProfile: string = localStorage.getItem('userProfile') || 'enseignant';  
 
   constructor(private actualiteService: ActualiesService) {}
 
