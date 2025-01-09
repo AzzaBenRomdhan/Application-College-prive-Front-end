@@ -1,0 +1,57 @@
+<div class="menu2-container">
+    <!-- Affichage du Menu du Jour -->
+    <div class="menu-card">
+        <div class="back-button">
+            <a routerLink="/eleve/home-eleve" >
+              <i class="fas fa-arrow-left"></i> 
+            </a>
+        </div>
+      <div class="menu-header">
+        <h3>Ajouter une réclamation</h3>
+      </div>
+      <div class="menu-body">
+        <form [formGroup]="reclamationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input
+              id="email"
+              formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="Entrez votre email"
+            />
+            <div *ngIf="reclamationForm.get('email')?.invalid && reclamationForm.get('email')?.touched" class="error">
+              <small>Email valide requis.</small>
+            </div>
+          </div>
+  
+          <div class="form-group mb-2">
+            <label for="message">Message :</label>
+            <textarea
+              id="message"
+              formControlName="sujet"
+              class="form-control"
+              rows="4"
+              placeholder="Entrez votre réclamation"
+            ></textarea>
+            <div *ngIf="reclamationForm.get('sujet')?.invalid && reclamationForm.get('sujet')?.touched" class="error">
+              <small>Message requis.</small>
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary" [disabled]="reclamationForm.invalid">
+            Envoyer
+          </button>
+        </form>
+  
+        <!-- Alertes -->
+        <div *ngIf="successMessage" class="alert alert-success mt-3">
+          {{ successMessage }}
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

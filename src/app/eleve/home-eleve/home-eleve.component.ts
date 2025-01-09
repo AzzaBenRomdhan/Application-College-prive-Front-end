@@ -13,7 +13,7 @@ export class HomeEleveComponent {
     { name: 'Cours', icon: 'fas fa-book', route: 'eleve/mescours' },
     { name: 'Moyennes', icon: 'fas fa-chart-line', route: '/eleve/notes-moyenne' },
     { name: 'Menu', icon: 'fas fa-utensils', route: '/eleve/menu' },
-    { name: 'Réclamation', icon: 'fas fa-comments', route: '/reclamation' },
+    { name: 'Réclamation', icon: 'fas fa-comments', route: '/eleve/reclamations' },
     { name: 'Discipline', icon: 'fas fa-calendar-alt', route: 'eleve/discipline-eleve' },
     { name: 'Actualité', icon: 'fas fa-bullhorn', route: 'eleve/actualites' },
   ];

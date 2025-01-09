@@ -1,0 +1,54 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ReclamationService {
+
+  constructor(private http: HttpClient) {}
+
+  // Ajouter une réclamation
+  reclamer(reclamation: any, email: string): Observable<string> {
+    return this.http.post<string>(`${environment.BASE_URL}/rec/ajouter`, reclamation, {
+      params: new HttpParams().set('email', email),
+    });
+  }
+
+  // Afficher toutes les réclamations
+  getAllReclamations(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.BASE_URL}/rec/afficher`);
+  }
+
+  // Afficher une réclamation par ID
+  getReclamationById(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.BASE_URL}/rec/afficherbyid`, {
+      params: new HttpParams().set('id', id.toString()),
+    });
+  }
+
+  // Afficher les réclamations par email
+  getReclamationsByEmail(email: string): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.BASE_URL}/rec/afficherbyemail`, {
+      params: new HttpParams().set('email', email),
+    });
+  }
+
+  // Répondre à une réclamation
+  respondToReclamation(id: number, response: string): Observable<string> {
+    return this.http.post<string>(`${environment.BASE_URL}/rec/reponse`, null, {
+      params: new HttpParams()
+        .set('id', id.toString())
+        .set('reponse', response),
+    });
+  }
+
+  // Supprimer une réclamation
+  deleteReclamation(id: number): Observable<string> {
+    return this.http.delete<string>(`${environment.BASE_URL}/rec/supprimer`, {
+      params: new HttpParams().set('id', id.toString()),
+    });
+  }
+}

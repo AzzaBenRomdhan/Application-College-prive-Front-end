@@ -6,6 +6,7 @@ import { HomeEleveComponent } from './home-eleve/home-eleve.component';
 import { MenuComponent } from './menu/menu.component';
 import { DisciplineComponent } from './discipline/discipline.component';
 import { ActualitesComponent } from './actualites/actualites.component';
+import { ReclamationsComponent } from './reclamations/reclamations.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,9 @@ const routes: Routes = [
       { path: 'notes-moyenne', component: NoteEtMoyenneComponent },
       { path: 'menu', component: MenuComponent },
       { path: 'discipline-eleve', component: DisciplineComponent },
-      { path: 'actualites', component: ActualitesComponent }
+      { path: 'actualites', component: ActualitesComponent },
+      { path: 'reclamations', component: ReclamationsComponent }
+
     ]
   }
 ];
