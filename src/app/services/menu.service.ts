@@ -23,10 +23,6 @@ export class MenuService {
     return this.http.get<any[]>(`${environment.BASE_URL}/menu/afficher`);
   }
 
-  afficherMenusParDate(date: any): Observable<any[]> {
-    const params = new HttpParams().set('date', date.toISOString());
-    return this.http.get<any[]>(`${environment.BASE_URL}/menu/afficherbydate`, { params });
-  }
   getMenusByDate(date: Date): Observable<any[]> {
     const formattedDate = date.toISOString().split('T')[0]; // Extracts 'yyyy-MM-dd' part
     const params = new HttpParams().set('date', formattedDate);    return this.http.get<any[]>(`${environment.BASE_URL}/menu/afficherbydate`, { params });

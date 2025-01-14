@@ -10,7 +10,6 @@
   <div class="menu-card" *ngIf="menuDuJour && menuDuJour.length > 0">
     <div class="menu-header">
       <h3>Menu du Jour</h3>
-      <p>Date : {{ formatDate(menuDuJour[0].datedeb) }}</p>
     </div>
     <div class="menu-body">
       <ul class="menu-items">
@@ -29,14 +28,14 @@
   </div>
 
   <!-- Affichage du Menu de la Semaine -->
-  <div *ngIf="menuSemaine && menuSemaine.length > 0" class="weekly-menu">
+  <div *ngIf="showMenuSemaine && menuSemaine && menuSemaine.length > 0" class="weekly-menu">
     <div class="menu-header">
       <h3>Menu de la Semaine</h3>
     </div>
     <div class="menu-body">
       <div class="weekly-menu-list">
         <div *ngFor="let jour of menuSemaine">
-          <h4>{{ jour.nomjour }} ({{ formatDate(jour.datedeb) }} - {{ formatDate(jour.datefin) }})</h4>
+          <h4>{{ jour.nomjour }} ({{ jour.datedeb }} - {{ jour.datefin }})</h4>
           <ul>
             <li>
               <div class="plat-card">

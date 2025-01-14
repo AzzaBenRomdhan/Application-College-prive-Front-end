@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductComponent } from './dashboard/dashboard-components/product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
 import { GestionEnseignantsComponent } from './dashboard/dashboard-components/gestion-enseignants/gestion-enseignants.component';
@@ -18,6 +17,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CalendrierEmploiComponent } from './dashboard/dashboard-components/gestion-calendrier-emploi/calendrier-emploi/calendrier-emploi.component';
 import { AcceuilComponent } from './dashboard/dashboard-components/gestion-Menu/acceuil/acceuil.component';
 import { GestionPaiementComponent } from './dashboard/dashboard-components/gestion-paiement/gestion-paiement.component';
+import { EleveGuard } from './guards/eleve.guard';
+import { ParentGuard } from './guards/parent.guard';
+import { EnseignantGuard } from './guards/enseignant.guard';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -35,7 +38,7 @@ const routes: Routes = [
       import('./eleve/eleve.module').then(
         (m) => m.EleveModule
       ),
-      //canActivate: [authGuard, AgentGuard]
+      canActivate: [EleveGuard]
   },
   {
     path : 'parent',
@@ -43,15 +46,15 @@ const routes: Routes = [
       import('./parent/parent.module').then(
         (m) => m.ParentModule
       ),
-      //canActivate: [authGuard, AgentGuard]
+      canActivate: [authGuard, ParentGuard]
   },
   {
     path : 'enseignant',
-    component:FullComponent,loadChildren:() => 
+    component:NavbarComponent,loadChildren:() => 
       import('./enseignant/enseignant.module').then(
         (m) => m.EnseignantModule
       ),
-      //canActivate: [authGuard, AgentGuard]
+      canActivate: [authGuard, EnseignantGuard]
   },
   {
     path : 'shared',loadChildren:() => 
@@ -80,7 +83,6 @@ const routes: Routes = [
       {path:"gestion-menu", component:AcceuilComponent},
       {path:"matieres", component:GestionMatiereComponent},
       {path:"calendrier-emploi", component:CalendrierEmploiComponent},
-      {path:"prospects", component:ProductComponent},
     ]
   },
 

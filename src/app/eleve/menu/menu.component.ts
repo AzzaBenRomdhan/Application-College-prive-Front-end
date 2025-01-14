@@ -6,7 +6,7 @@ import { MenuService } from 'src/app/services/menu.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent  implements OnInit {
+export class MenuComponent implements OnInit {
   menuDuJour: any[] = [];
   menuSemaine: any[] = [];
   showMenuSemaine: boolean = false;
@@ -18,8 +18,8 @@ export class MenuComponent  implements OnInit {
   }
 
   getMenuDuJour(): void {
-    const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
-    this.menuService.afficherMenusParDate(today).subscribe(
+    const today = new Date(); // Format: YYYY-MM-DD
+    this.menuService.getMenusByDate(today).subscribe(
       (data) => {
         this.menuDuJour = data;
         if (!this.menuDuJour || this.menuDuJour.length === 0) {
@@ -36,8 +36,8 @@ export class MenuComponent  implements OnInit {
   getMenuSemaine(): void {
     this.menuService.afficherMenus().subscribe(
       (data) => {
+        console.log("voici menu semaon", data);
         this.menuSemaine = data;
-        this.showMenuSemaine = true;
       },
       (error) => {
         console.error('Erreur lors de la récupération du menu de la semaine:', error);
@@ -47,16 +47,5 @@ export class MenuComponent  implements OnInit {
 
   toggleMenuSemaine(): void {
     this.showMenuSemaine = !this.showMenuSemaine;
-  }
-
-  formatDate(date: string): string {
-    if (!date) return '';
-    const d = new Date(date);
-    return d.toLocaleDateString('fr-FR', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
   }
 }

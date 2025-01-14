@@ -14,6 +14,7 @@ import { ModifierDisciplineComponent } from './discipline/modifier-discipline/mo
 import { DeleteConfirmationComponent } from './discipline/delete-confirmation/delete-confirmation.component';
 import { ReclamationsComponent } from './reclamations/reclamations.component';
 import { ActualitesComponent } from './actualites/actualites.component';
+import { DetailsReclamationComponent } from './reclamations/details-reclamation/details-reclamation.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ActualitesComponent } from './actualites/actualites.component';
     DeleteConfirmationComponent,
     ReclamationsComponent,
     ActualitesComponent,
+    DetailsReclamationComponent,
   ],
   imports: [
     CommonModule,

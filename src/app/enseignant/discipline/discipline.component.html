@@ -1,8 +1,14 @@
-<button mat-raised-button class="mb-2 me-2" color="primary" (click)="openAddDiscipline()">
-    <i class="fa-solid fa-plus me-1"></i>
-    Ajouter un nouveau discipline
-</button>
+
 <div class="container">
+  <div class="back-button mb-2">
+    <a routerLink="/enseignant/home-enseignant">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+  </div>
+  <button mat-raised-button class="mb-2 me-2" color="primary" (click)="openAddDiscipline()">
+    <i class="fa-solid fa-plus me-1"></i>
+    Ajouter une nouvelle discipline
+  </button>
     <h2>Gestion des disciplines</h2>
     
     <div class="filters">

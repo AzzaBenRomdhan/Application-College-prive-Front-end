@@ -13,12 +13,10 @@ navigateTo(route: string) {
   this.router.navigate([route]);
 }
   teacherMenuItems = [
-    { name: 'Cours', icon: 'fas fa-book-open', route: '/cours' },
-    { name: 'Réclamations', icon: 'fas fa-comment-dots', route: '/reclamations' },
-    { name: 'Présence et Absence', icon: 'fas fa-user-check', route: '/presence-absence' },
-    { name: 'Planning des Cours', icon: 'fas fa-calendar-alt', route: '/planning-cours' },
-    { name: 'Calendrier Examens', icon: 'fas fa-calendar-day', route: '/calendrier-examens' },
-    { name: 'Notes et Évaluations', icon: 'fas fa-clipboard-list', route: '/notes-evaluations' }
+    { name: 'Cours', icon: 'fas fa-book', route: '/enseignant/mescours' },
+    { name: 'Discipline', icon: 'fas fa-calendar-alt', route: '/enseignant/disicplines' },
+    { name: 'Réclamations', icon: 'fas fa-comments', route: '/enseignant/reclamations' },
+    { name: 'Actualité', icon: 'fas fa-bullhorn', route: '/enseignant/actualites' },
   ];
   
 }

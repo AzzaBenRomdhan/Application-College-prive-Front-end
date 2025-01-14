@@ -2,13 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TawasalnaModule } from '../tawasalna-module'
 import { DashboardComponent } from './dashboard.component';
-import { SalesComponent } from './dashboard-components/sales/sales.component';
-import { ActivityComponent } from './dashboard-components/activity/activity.component';
-import { ProductComponent } from './dashboard-components/product/product.component';
-import { CardsComponent } from './dashboard-components/cards/cards.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { StatisticsComponent } from './statistics/statistics.component';
+import { StatisticsComponent } from './dashboard-components/statistics/statistics.component';
 import { GestionEnseignantsComponent } from './dashboard-components/gestion-enseignants/gestion-enseignants.component';
 import { GestionElevesComponent } from './dashboard-components/gestion-eleves/gestion-eleves.component';
 import { AddEnseignantComponent } from './dashboard-components/gestion-enseignants/add-enseignant/add-enseignant.component';
@@ -47,7 +43,6 @@ import { GestionEmploiComponent } from './dashboard-components/gestion-calendrie
 import { CreateMenuComponent } from './dashboard-components/gestion-Menu/create-menu/create-menu.component';
 import { AcceuilComponent } from './dashboard-components/gestion-Menu/acceuil/acceuil.component';
 import { ListeDesMenuComponent } from './dashboard-components/gestion-Menu/liste-des-menu/liste-des-menu.component';
-import { ListeDesReservationComponent } from './dashboard-components/gestion-Menu/liste-des-reservation/liste-des-reservation.component';
 import { ModiferMenuComponent } from './dashboard-components/gestion-Menu/modifer-menu/modifer-menu.component';
 import { DetaillsDisciplineComponent } from './dashboard-components/gestion-discipline/detaills-discipline/detaills-discipline.component';
 import { AddActualiteComponent } from './dashboard-components/gestion-actualites/add-actualite/add-actualite.component';
@@ -59,10 +54,6 @@ import { DetailsReclamationComponent } from './dashboard-components/gestion-recl
 @NgModule({
   declarations: [
     DashboardComponent,
-    SalesComponent,
-    ActivityComponent,
-    ProductComponent,
-    CardsComponent,
     StatisticsComponent,
     GestionEnseignantsComponent,
     GestionElevesComponent,
@@ -101,7 +92,6 @@ import { DetailsReclamationComponent } from './dashboard-components/gestion-recl
     CreateMenuComponent,
     AcceuilComponent,
     ListeDesMenuComponent,
-    ListeDesReservationComponent,
     ModiferMenuComponent,
     DetaillsDisciplineComponent,
     AddActualiteComponent,
@@ -119,9 +109,6 @@ import { DetailsReclamationComponent } from './dashboard-components/gestion-recl
   ],
   exports: [
     DashboardComponent,
-    SalesComponent,
-    ActivityComponent,
-    ProductComponent,
     HomeEnseignantComponent,
     HomeEleveComponent
   ]

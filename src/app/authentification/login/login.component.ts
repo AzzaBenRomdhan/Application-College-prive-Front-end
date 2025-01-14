@@ -21,6 +21,7 @@ export class LoginComponent {
         this.token = response.token;
         this.role = response.role;
         this.message = response.message;
+        localStorage.setItem('isLoggedIn', 'true'); // Store isLoggedIn as true
         localStorage.setItem('token', this.token); // Stockez le token pour une utilisation future
         console.log('Login successful:', response);
         this.authService.handleLoginResponse(response);  // Appel à la méthode de redirection

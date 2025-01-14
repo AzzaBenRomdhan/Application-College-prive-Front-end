@@ -42,17 +42,14 @@ export class AuthService {
       return this.http.post<LoginResponse>(url, body, { headers });
     }
     handleLoginResponse(response: any): void {
-    const token = response.token;
-    const profil = response.profil;
-    const email = response.email;
+      const token = response.token;
+      const profil = response.profil;
+      const email = response.email;
 
-
-    // Sauvegarder le token dans localStorage (ou dans un autre endroit sécurisé)
-    localStorage.setItem('token', token);
-    localStorage.setItem('userProfile', profil);
-    localStorage.setItem('email', email);
-
-
+      // Sauvegarder le token dans localStorage (ou dans un autre endroit sécurisé)
+      localStorage.setItem('token', token);
+      localStorage.setItem('userProfile', profil);
+      localStorage.setItem('email', email);
     
     // Logique de redirection en fonction du profil
     switch (profil) {
@@ -64,7 +61,7 @@ export class AuthService {
           this.router.navigate(['/dashboard/home']);
           break;
       case 'enseignant':
-        this.router.navigate(['/dashboard/home-enseignant']);
+        this.router.navigate(['/enseignant/home-enseignant']);
         break;
       case 'parent':
         this.router.navigate(['/parent/home-parent']);
