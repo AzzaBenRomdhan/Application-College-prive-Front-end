@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MenuService } from 'src/app/services/menu.service';
 
 @Component({
@@ -9,14 +10,14 @@ import { MenuService } from 'src/app/services/menu.service';
 })
 export class CreateMenuComponent {
   menuForm: FormGroup;
-  successMessage: string | null = null;
-  errorMessage: string | null = null;
   typemenuOptions = ['Apporter', 'Reserver'];
   joursOptions = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 
-
-  constructor(private fb: FormBuilder,
-    private menuService: MenuService) {
+  constructor(
+    private fb: FormBuilder,
+    private menuService: MenuService,
+    private snackBar: MatSnackBar // Inject MatSnackBar
+  ) {
     this.menuForm = this.fb.group({
       typemenu: ['', Validators.required],
       platentree: ['', Validators.required],
@@ -31,18 +32,22 @@ export class CreateMenuComponent {
   onSubmit() {
     if (this.menuForm.valid) {
       this.menuService.ajouterMenu(this.menuForm.value).subscribe({
-        next: (response: any) => {
-          this.successMessage = response;
-          this.errorMessage = null;
-          this.menuForm.reset();
-          this.menuForm.markAsPristine(); 
-          this.menuForm.markAsUntouched();
+        next: () => {
+          this.showSnackBar('Menu ajouté avec succès !', 'success');
         },
-        error: (error) => {
-          this.successMessage = null;
-          this.errorMessage = 'Erreur lors de l\'ajout du menu.';
+        error: () => {
+          this.showSnackBar('Erreur lors de l\'ajout du menu.', 'error');
         }
       });
+    } else {
+      this.showSnackBar('Veuillez remplir tous les champs requis.', 'warning');
     }
+  }
+
+  private showSnackBar(message: string, type: string) {
+    this.snackBar.open(message, 'Fermer', {
+      duration: 3000,
+      panelClass: `snackbar-${type}` // Custom CSS class for different types
+    });
   }
 }

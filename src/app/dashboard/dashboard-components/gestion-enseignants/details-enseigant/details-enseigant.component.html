@@ -1,47 +1,36 @@
 <mat-dialog-content class="mat-typography">
-    <div class="dialog-header">
-      <h3>Détails de l'enseignant</h3>
+  <div class="dialog-header">
+    <h3>Détails de l'enseignant</h3>
+  </div>
+
+  <div class="details-container">
+    <div class="detail-field">
+      <mat-label>Nom</mat-label>
+      <span>{{ data.nom }}</span>
     </div>
-  
-    <div class="details-container">
-      <div class="detail-field">
-        <mat-label>Nom</mat-label>
-        <span>mohamed</span>
-      </div>
-  
-      <div class="detail-field">
-        <mat-label>Prénom</mat-label>
-        <span>salah</span>
-      </div>
-  
-      <div class="detail-field">
-        <mat-label>Nom d'utilisateur</mat-label>
-        <span>user1</span>
-      </div>
-  
-      <div class="detail-field">
-        <mat-label>Libellé</mat-label>
-        <span>libelle enseigannt</span>
-      </div>
-  
-      <div class="detail-field">
-        <mat-label>Adresse email</mat-label>
-        <span>mohamedgmail.com</span>
-      </div>
-  
-      <div class="detail-field">
-        <mat-label>Classe</mat-label>
-        <span>classe 5</span>
-      </div>
-  
-      <div class="detail-field">
-        <mat-label>Date de recrutement</mat-label>
-        <span>01/02/2020</span>
-      </div>
+
+    <div class="detail-field">
+      <mat-label>Prénom</mat-label>
+      <span>{{ data.prenom }}</span>
     </div>
-  </mat-dialog-content>
-  
-  <mat-dialog-actions class="action-buttons">
-    <button mat-button mat-dialog-close>Fermer</button>
-  </mat-dialog-actions>
-  
+
+    <div class="detail-field">
+      <mat-label>Login</mat-label>
+      <span>{{ data.login }}</span>
+    </div>
+
+    <div class="detail-field">
+      <mat-label>Libellé</mat-label>
+      <span>{{ data.libelle }}</span>
+    </div>
+
+    <div class="detail-field">
+      <mat-label>Adresse email</mat-label>
+      <span>{{ data.email }}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="action-buttons">
+  <button mat-button mat-dialog-close>Fermer</button>
+</mat-dialog-actions>

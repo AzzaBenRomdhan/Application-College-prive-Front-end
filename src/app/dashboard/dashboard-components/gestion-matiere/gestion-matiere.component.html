@@ -1,64 +1,20 @@
-<button mat-raised-button class="mb-2 me-2" color="primary" (click)="openForm()">
+<button mat-raised-button class="mb-2 me-2" color="primary" (click)="openAddMatiere()">
     <i class="fa-solid fa-plus me-1"></i>
-    Ajouter une nouvelle matiére
+    Ajouter une matiére
 </button>
-  
-<!-- Formulaire d'ajout de salle -->
-<div *ngIf="openFormdiv" class="form-container">
-    <form [formGroup]="matiereForm" (ngSubmit)="ajouteMatiere()">
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Nom de la matiére</mat-label>
-        <input
-          matInput
-          placeholder="Entrez le nom de la matiére"
-          formControlName="nom"
-          required
-        />
-        <mat-error *ngIf="matiereForm.get('nom')?.invalid && matiereForm.get('nom')?.touched">
-          Le nom de la matiére est requis.
-        </mat-error>
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Coeifficient</mat-label>
-        <input
-          matInput
-          placeholder="Entrez le coeifficient"
-          formControlName="coefficient"
-          required
-        />
-        <mat-error *ngIf="matiereForm.get('coefficient')?.invalid && matiereForm.get('coefficient')?.touched">
-          Le coefficient de la matiére est requis.
-        </mat-error>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="matiereForm.invalid">
-        Ajouter
-      </button>
-    </form>
-  </div>
-  
-<div class="gestion-container">
-  <!-- Liste des salles -->
-  <mat-card class="reclamation-card">
-    <mat-card-header>
-      <mat-card-title>Gestion des Matieres </mat-card-title>
-    </mat-card-header>
-    <div class="student-table">
+<div class="container">
+    <h2>Gestion des matiéres</h2>
+      <!-- Tableau -->
       <ul class="responsive-table">
         <li class="table-header">
-          <div class="col col-1">ID</div>
-          <div class="col col-2">Nom</div>
-          <div class="col col-2">Coefficient</div>
+          <div class="col col-4">Nom</div>
+          <div class="col col-4">Coefficient</div>
         </li>
-  
-        <!-- Itération sur les salles -->
+      
+        <!-- Itération sur la liste des utilisateurs -->
         <li *ngFor="let m of matieres" class="table-row">
-          <div class="col col-1" data-label="ID">{{ m.id }}</div>
-          <div class="col col-2" data-label="Nom">{{ m.nom }}</div>
-          <div class="col col-2" data-label="Nom">{{ m.coefficient }}</div>
+          <div class="col col-4" data-label="Nom">{{ m.nom }}</div>
+          <div class="col col-4" data-label="Coefficient">{{ m.coefficient }}</div>
         </li>
-      </ul>
-    </div>
-  </mat-card>
-  </div>
+    </ul>  
+</div>

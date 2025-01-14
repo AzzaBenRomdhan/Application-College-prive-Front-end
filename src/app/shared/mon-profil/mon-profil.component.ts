@@ -15,6 +15,7 @@ export class MonProfilComponent implements OnInit{
   login: string = ''; 
   nom: string = ''; 
   prenom: string = ''; 
+  matricule: string = '';
 
   
   constructor(private userService: UserService) { }
@@ -33,6 +34,7 @@ export class MonProfilComponent implements OnInit{
           this.nom= user.nom;
           this.prenom= user.prenom;
           this.login=user.login;
+          this.matricule = user.matricule;
         },
         error: (err) => {
           console.error('Erreur lors de la récupération de l\'utilisateur :', err);

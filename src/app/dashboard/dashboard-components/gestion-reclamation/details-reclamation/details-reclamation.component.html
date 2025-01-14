@@ -1,32 +1,32 @@
 <mat-dialog-content class="mat-typography">
     <div class="dialog-header">
-      <h3>Détails du Parent</h3>
+      <h3>Détails de la réclamation</h3>
     </div>
   
     <div class="details-container">
       <div class="detail-field">
-        <mat-label>Nom</mat-label>
-        <span>{{data.nom}}</span>
+        <mat-label>Elève</mat-label>
+        <span>{{ data.user.nom }} {{ data.user.prenom }}</span>
       </div>
   
       <div class="detail-field">
-        <mat-label>Prénom</mat-label>
-        <span>{{data.prenom}}</span>
+        <mat-label>Enseignant</mat-label>
+        <span>{{ data.destinataire.nom }} {{ data.destinataire.prenom }}</span>
       </div>
   
       <div class="detail-field">
-        <mat-label>Email</mat-label>
-        <span>{{data.email}}</span>
+        <mat-label>Sujet</mat-label>
+        <span>{{ data.sujet }}</span>
       </div>
-
+  
       <div class="detail-field">
-        <mat-label>Libellé</mat-label>
-        <span>{{data.libelle}}</span>
+        <mat-label>Résultat</mat-label>
+        <span>{{ data.resultat }}</span>
       </div>
-
+  
       <div class="detail-field">
-        <mat-label>Login</mat-label>
-        <span>{{data.login}}</span>
+        <mat-label>Date</mat-label>
+        <span>{{ data.date }}</span>
       </div>
     </div>
   </mat-dialog-content>

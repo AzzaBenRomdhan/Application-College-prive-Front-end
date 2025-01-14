@@ -10,7 +10,6 @@ export class AcceuilComponent  implements OnInit {
 
   showAjoutMenuForm = false;
   showListeMenu = false;
-  showListeReservation = false;
   
   constructor( private router: Router){}
   ngOnInit(): void {
@@ -27,28 +26,15 @@ export class AcceuilComponent  implements OnInit {
       icon: 'fas fa-list', // Icône d'une liste pour afficher tous les menus
       action: () => this.openListMenu()
     },
-    {
-      name: 'Gérer les Réservations',
-      icon: 'fas fa-calendar-check', // Icône pour les réservations
-      action: () => this.openListeReservation()
-    }
   ];
   
   openAjoutForm(): void {
     this.showAjoutMenuForm = !this.showAjoutMenuForm; 
     this.showListeMenu = false; 
-    this.showListeReservation = false  
   }
   openListMenu(): void {
     this.showListeMenu = !this.showListeMenu;
     this.showAjoutMenuForm = false;
-    this.showListeReservation = false 
-  }
-
-  openListeReservation(): void {
-    this.showListeReservation = !this.showListeReservation; 
-    this.showListeMenu = false; 
-    this.showAjoutMenuForm = false
   }
 
   handleMenuClick(item: any): void {

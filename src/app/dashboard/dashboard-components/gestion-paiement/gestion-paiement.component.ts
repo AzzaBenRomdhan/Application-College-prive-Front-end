@@ -11,6 +11,7 @@ export class GestionPaiementComponent {
   payementForm: FormGroup;
   successMessage: string | null = null;
   errorMessage: string | null = null;
+  loading: boolean = false;
 
   modepayOptions = ['Mensiel', 'Annuel', 'Trimestre'];
   modalitePayOptions = ['CASH', 'CHECK', 'ONLINE'];
@@ -46,16 +47,20 @@ export class GestionPaiementComponent {
 
   onSubmit() {
     if (this.payementForm.valid) {
+      this.loading = true;  // Affichage du loader
+
       this.payementService.enregistrerPayement(this.payementForm.value).subscribe({
         next: (response) => {
           this.successMessage = 'Paiement enregistré avec succès.';
           this.errorMessage = null;
+          this.loading = false;  // Masquage du loader
           console.log('Réponse du serveur :', response);
         },
         error: (error) => {
           this.successMessage = null;
           // Récupère le message d'erreur du backend s'il existe
           this.errorMessage = error;
+          this.loading = false;  // Masquage du loader
           console.error('Erreur:', error);
         },
       });

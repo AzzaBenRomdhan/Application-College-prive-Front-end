@@ -11,7 +11,7 @@ import { ModiferMenuComponent } from '../modifer-menu/modifer-menu.component';
 export class ListeDesMenuComponent implements OnInit {
   menus: any[] = [];
   displayedColumns: string[] = ['typemenu', 'platentree', 'platprincipale', 'dessert', 'nomjour', 'datedeb', 'datefin', 'action'];
-  selectedDate: string = ''; 
+  selectedDate: Date = new Date();  // Set default selected date
 
   constructor(private menuService: MenuService, private dialog: MatDialog) {}
 
@@ -35,7 +35,8 @@ export class ListeDesMenuComponent implements OnInit {
   // Méthode pour récupérer les menus en fonction de la date sélectionnée
   getMenusByDate(): void {
     if (this.selectedDate) {
-      this.menuService.afficherMenusParDate(this.selectedDate).subscribe({
+      const selectedDate = new Date(this.selectedDate);
+      this.menuService.getMenusByDate(selectedDate).subscribe({
         next: (data) => {
           this.menus = data;
         },

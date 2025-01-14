@@ -34,7 +34,7 @@
 
   .dashboard {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes pour les cartes */
+    grid-template-columns: repeat(2, 1fr); /* 3 colonnes pour les cartes */
     gap: 16px;
     padding: 20px;
   }

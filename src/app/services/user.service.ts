@@ -24,5 +24,11 @@ export class UserService {
   updateUser(utilisateur: any,id: number) {
     return this.http.put(`${environment.BASE_URL}/users/update/${id}`, utilisateur);
   }
+  countEleve(): Observable<any> {
+    return this.http.get(`${environment.BASE_URL}/users/count-eleves`);
+  }
+  countEnseignant(): Observable<any> {
+    return this.http.get(`${environment.BASE_URL}/users/count-enseignants`);
+  }
 }
 

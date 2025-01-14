@@ -29,7 +29,7 @@
           <div class="col col-2" data-label="Nom">{{ user.nom }} {{ user.prenom }}</div>
           <div class="col col-3" data-label="Classe" *ngIf="user?.classe?.nomclasse">{{ user.classe.nomclasse }}</div>
           <div class="col col-4" data-label="Actions">
-            <button class="action-btn details-btn" (click)="detailsEleve()">Détails</button>
+            <button class="action-btn details-btn" (click)="detailsEleve(user)">Détails</button>
             <button class="action-btn edit-btn" (click)="modifierEleve(user)">Modifier</button>
             <button class="action-btn delete-btn" (click)="openConfirmationDialog(user.id)">Supprimer</button>
             <button class="action-btn moyenne-btn" (click)="redirectMoyenne(user.id)">Moyenne et note</button>

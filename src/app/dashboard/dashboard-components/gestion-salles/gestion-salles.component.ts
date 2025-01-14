@@ -12,6 +12,32 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./gestion-salles.component.scss']
 })
 export class GestionSallesComponent implements OnInit{
+
+  menuItems = [
+    { name: 'Gestion des salles', icon: 'fas fa-door-open', action: () => this.openSalle() },
+    { name: 'Gestion des départements', icon: 'fas fa-building', action: () => this.openDep() },
+  ];
+  
+
+  routerActive: string = "activelink";
+  showSalleForm = false;
+  showDepForm = false;
+
+  handleMenuClick(item: any): void {
+    item.action();
+  }
+
+  openSalle(): void {
+    this.showSalleForm = !this.showSalleForm; 
+    this.showDepForm = false; 
+  }
+
+  openDep(): void {
+    this.showDepForm = !this.showDepForm; 
+    this.showSalleForm = false; 
+  }
+
+
   salles: any[] = [];
   openFormdiv: boolean = false;
   openFormdep: boolean = false;

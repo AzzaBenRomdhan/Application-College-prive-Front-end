@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ReclamationService } from 'src/app/services/reclamation.service';
+import { DetailsReclamationComponent } from './details-reclamation/details-reclamation.component';
 
 @Component({
   selector: 'app-gestion-reclamation',
@@ -12,7 +14,11 @@ export class GestionReclamationComponent implements OnInit{
   selectedReclamation: any;
   response: string = '';
 
-  constructor(private reclamationService: ReclamationService) {}
+  constructor(
+    private reclamationService: ReclamationService,
+    private dialog: MatDialog
+
+  ) {}
 
   ngOnInit() {
     this.loadReclamations();
@@ -28,36 +34,10 @@ export class GestionReclamationComponent implements OnInit{
       }
     );
   }
-
-  viewReclamation(reclamation: any) {
-    this.selectedReclamation = reclamation;
-  }
-
-  resolveReclamation(reclamation: any) {
-    reclamation.status = 'resolue';
-    // Optionnel : Mettre à jour côté serveur si nécessaire
-    this.reclamationService.getReclamationById(reclamation.id).subscribe(
-      () => {
-        console.log('Réclamation résolue');
-      },
-      (error) => {
-        console.error('Erreur lors de la résolution :', error);
-      }
-    );
-  }
-
-  submitResponse() {
-    if (this.selectedReclamation) {
-      this.reclamationService.respondToReclamation(this.selectedReclamation.id, this.response).subscribe(
-        () => {
-          console.log('Réponse envoyée');
-          this.selectedReclamation.response = this.response;
-          this.response = '';
-        },
-        (error) => {
-          console.error('Erreur lors de l\'envoi de la réponse :', error);
-        }
-      );
-    }
+  detailReclamation(rec:any): void {
+    this.dialog.open(DetailsReclamationComponent, {
+      width: '600px',
+      data: rec
+    })
   }
 }

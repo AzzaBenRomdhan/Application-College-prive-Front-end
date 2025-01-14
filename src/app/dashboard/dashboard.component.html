@@ -1,17 +1,15 @@
-<app-statistics></app-statistics>
-
-<div>
-  <div fxLayout="row wrap" fxLayoutGap="30px grid">
-    <div fxFlex.md="33%" fxFlex.lg="33%" fxFlex.xl="33%" fxFlex.sm="100%">
-      <app-activity></app-activity>
-    </div>
-    <div fxFlex.md="66%" class="overflow-x-hidden" fxFlex.lg="66%" fxFlex.xl="66%" fxFlex.sm="100%">
-      <app-product></app-product>
-    </div>
+<!-- Date & Time Section -->
+<div class="datetime-container">
+  <div class="datetime">
+    <h2>{{ currentDate | date: 'fullDate' }}</h2>
+    <h3>{{ currentTime }}</h3>
   </div>
 </div>
+<!-- Banner section -->
+<div class="banner">
+  <img src="assets/images/collége.jpg" alt="Banner Image">
+  <h1 class="banner-title">Collége privé Les Leaders </h1>
+</div>
 
-<app-sales></app-sales>
+<app-statistics></app-statistics>
 
-
-<app-cards></app-cards>

@@ -93,9 +93,10 @@ export class GestionElevesComponent implements OnInit{
   }
   
 
-  detailsEleve(){
+  detailsEleve(user: any){
     this.dialog.open(DetailsEleveComponent, {
-      width: '600px' 
+      width: '600px' ,
+      data: user
     });
   }
 

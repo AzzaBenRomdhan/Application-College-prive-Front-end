@@ -10,11 +10,12 @@ import { DetaillsDisciplineComponent } from './detaills-discipline/detaills-disc
 })
 export class GestionDisciplineComponent implements OnInit{
   disciplines: any[] = [];
-  displayedColumns: string[] = ['eleve', 'enseignant', 'status', 'action'];
-  selectedDiscipline: any = null;
-  response: string = '';
   status: string = '';
-  constructor(private disciplineService: DisciplineService, private dialog: MatDialog) {}
+  
+  constructor(
+    private disciplineService: DisciplineService, 
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getAllDisciplines();
@@ -49,14 +50,6 @@ export class GestionDisciplineComponent implements OnInit{
    }
   }
 
-cancel(){
-  this.selectedDiscipline = null;
-}
-
-  
-  openDisciplineDetails(discipline: any) {
-    this.selectedDiscipline = discipline;
-  }
   openDisciplineDetailsInDialog(discipline: any) {
     const dialogRef = this.dialog.open(DetaillsDisciplineComponent, {
       data: { 
@@ -73,8 +66,7 @@ cancel(){
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.status = result.status;
-        this.response = result.response;
-      }
+            }
     });
   }
   

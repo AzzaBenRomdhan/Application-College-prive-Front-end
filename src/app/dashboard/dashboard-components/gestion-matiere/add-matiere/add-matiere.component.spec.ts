@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GestionMenuComponent } from './gestion-menu.component';
+import { AddMatiereComponent } from './add-matiere.component';
 
-describe('GestionMenuComponent', () => {
-  let component: GestionMenuComponent;
-  let fixture: ComponentFixture<GestionMenuComponent>;
+describe('AddMatiereComponent', () => {
+  let component: AddMatiereComponent;
+  let fixture: ComponentFixture<AddMatiereComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GestionMenuComponent ]
+      declarations: [ AddMatiereComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GestionMenuComponent);
+    fixture = TestBed.createComponent(AddMatiereComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

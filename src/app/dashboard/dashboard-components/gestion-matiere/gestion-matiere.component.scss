@@ -1,120 +1,84 @@
-.reclamation-card {
-    padding: 20px;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    flex: 1; /* Chaque carte prendra la même largeur */
-    margin: 0; /* Retirer la marge par défaut des cartes */
+body {
+  font-family: 'lato', sans-serif;
+}
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+  small {
+    font-size: 0.5em;
   }
-  
-  mat-card-header {
-    background-color: #1d1d5c;
-    color: #fff;
-    padding: 15px;
-    border-radius: 8px 8px 0 0;
+}
+
+.responsive-table {
+  li {
+    border-radius: 3px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 10px;
   }
-  
-  mat-card-title {
-    font-size: 5px;
+  .table-header {
+    background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  }
+  .col-1 {
+    flex-basis: 10%;
+  }
+  .col-2 {
+    flex-basis: 25%;
+  }
+  .col-3 {
+    flex-basis: 25%;
+  }
+  .col-4 {
+    flex-basis: 45%;
   }
   
-  .responsive-table {
-    li {
-      border-radius: 3px;
-      padding: 25px 30px;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 25px;
-    }
+  @media all and (max-width: 767px) {
     .table-header {
-      background-color: #95A5A6;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
+      display: none;
     }
-    .table-row {
-      background-color: #ffffff;
-      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+
+    li {
+      display: block;
     }
-    .col-1 {
-      flex-basis: 25%;
+    .col {
+      
+      flex-basis: 100%;
+      
     }
-    .col-2 {
-      flex-basis: 25%;
-    }
-    .col-3 {
-      flex-basis: 25%;
-    }
-    .col-4 {
-      flex-basis: 25%;
-    }
-    
-    @media all and (max-width: 767px) {
-      .table-header {
-        display: none;
-      }
-  
-      li {
-        display: block;
-      }
-      .col {
-        
-        flex-basis: 100%;
-        
-      }
-      .col {
-        display: flex;
-        padding: 10px 0;
-        &:before {
-          color: #6C7A89;
-          padding-right: 10px;
-          content: attr(data-label);
-          flex-basis: 50%;
-          text-align: right;
-        }
-      }
-    }
-  
-  
-    button {
-      margin: 5px;
-    }
-  }
-  
-  mat-dialog-content {
-    padding: 20px;
-  
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-  
-    .button-group {
+    .col {
       display: flex;
-      gap: 10px;
-      margin-top: 15px;
+      padding: 10px 0;
+      &:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
     }
-  
-  
   }
-  
-  mat-form-field {
-    width: 100%;
-    margin-right: 50px;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  .filters, .sort-buttons {
+      flex-direction: column;
   }
-  .form-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-direction: column;  /* Aligner les éléments verticalement */
-    margin-bottom: 10px;
-  }
-  .gestion-container {
-    display: flex;
-    justify-content: space-between; /* Espacement entre les cartes */
-    gap: 20px; /* Optionnel, pour ajouter de l'espace entre les deux cartes */
-  }
-  
+}

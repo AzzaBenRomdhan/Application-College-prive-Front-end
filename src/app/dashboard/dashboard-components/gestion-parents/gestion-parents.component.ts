@@ -40,9 +40,10 @@ export class GestionParentsComponent implements OnInit{
     });
   }
 
-  detailsParent(){
+  detailsParent(user:any){
     this.dialog.open(DetailsParentComponent, {
-      width: '600px' 
+      width: '600px',
+      data: user
     })
   }
   modifierParent(user: any){

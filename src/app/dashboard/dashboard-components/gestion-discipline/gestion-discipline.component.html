@@ -1,73 +1,45 @@
-<!-- <mat-dialog-content *ngIf="selectedDiscipline">
-  <h3>Détails de la discipline pour {{ selectedDiscipline.eleve.nom }}</h3>
-  <p><strong>Raison : </strong>{{ selectedDiscipline.cause }}</p>
-  <p><strong>Date : </strong>{{ selectedDiscipline.date }}</p>
-
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Statut</mat-label>
-    <mat-select [(ngModel)]="status">
-      <mat-option value="APPROVED">Approuvé</mat-option>
-      <mat-option value="REJECTED">Rejeté</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Commentaires ou Réponses</mat-label>
-    <textarea matInput [(ngModel)]="response" placeholder="Entrez votre commentaire ici..."></textarea>
-  </mat-form-field>
-
-  <div class="button-group">
-    <button mat-raised-button color="primary" [disabled]="!response || !status" (click)="submitResponse()">
-      Envoyer la réponse
-    </button>
-    <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
+  <!-- Bannière avec titre, image et description -->
+  <div class="banner">
+    <div class="banner-text">
+      <h3>Tableau de Bord - Gestion des Disciplines</h3>
+      <p>
+        Bienvenue dans votre espace d'administration des disciplines. 
+        Les enseignants soumettent des disciplines, et votre rôle en tant qu'administrateur est de les traiter. 
+        Vous pouvez accepter ou refuser ces disciplines avant qu'elles ne soient envoyées aux parents ou aux élèves.
+      </p>
+    </div>
   </div>
-</mat-dialog-content> -->
 
-
-<mat-card class="reclamation-card">
-  <mat-card-header>
-    <mat-card-title>Gestion de discipline élève</mat-card-title>
-  </mat-card-header>
-
-  <div class="student-table">
-    <table mat-table [dataSource]="disciplines" class="mat-elevation-z8">
-      <ng-container matColumnDef="eleve">
-        <th mat-header-cell *matHeaderCellDef> Élève </th>
-        <td mat-cell *matCellDef="let discipline"> 
-          {{ discipline.eleve.nom }} {{ discipline.eleve.prenom }} 
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="enseignant">
-        <th mat-header-cell *matHeaderCellDef> Enseignant </th>
-        <td mat-cell *matCellDef="let discipline"> 
-          {{ discipline.enseignant.nom }} {{ discipline.enseignant.prenom }} 
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Statut </th>
-        <td mat-cell *matCellDef="let discipline"> 
-          {{ discipline.statusDisc | titlecase }} 
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let discipline">
-          <button mat-raised-button color="primary" (click)="openDisciplineDetailsInDialog(discipline)">
+<div class="container">
+  <h2>Gestion de discipline élève</h2>
+  
+  <!-- Vérification si la liste est vide -->
+  <div *ngIf="disciplines.length === 0" class="no-data-message">
+    <p>Aucune discipline n'a été trouvée.</p>
+  </div>
+  
+  <!-- Barre de recherche et filtres -->
+  <ul class="responsive-table" *ngIf="disciplines.length > 0">
+      <li class="table-header">
+        <div class="col col-2">Élève</div>
+        <div class="col col-3">Enseignant</div>
+        <div class="col col-3">Statut</div>
+        <div class="col col-4">Actions</div>
+      </li>
+    
+      <!-- Itération sur la liste des utilisateurs -->
+      <li *ngFor="let discipline of disciplines" class="table-row">
+        <div class="col col-2" data-label="Élève">{{ discipline.eleve.nom }} {{ discipline.eleve.prenom }} </div>
+        <div class="col col-3" data-label="Enseignant">{{ discipline.enseignant.nom }} {{ discipline.enseignant.prenom }} </div>
+        <div class="col col-3" data-label="Statut">{{ discipline.statusDisc | titlecase }} </div>
+        <div class="col col-4" data-label="Actions">
+          <button class="action-btn details-btn" (click)="openDisciplineDetailsInDialog(discipline)">
             Détails
-          </button>
-          <button mat-raised-button color="warn" (click)="removeDiscipline(discipline)">
+          </button> 
+          <button class="action-btn delete-btn" (click)="removeDiscipline(discipline)">
             Supprimer
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </div>
-</mat-card>
-
+          </button>         
+        </div>
+      </li>
+  </ul>      
+</div>

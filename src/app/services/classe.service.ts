@@ -17,4 +17,7 @@ export class ClasseService {
     allClasses(): Observable<any> {
       return this.http.get<any>(`${environment.BASE_URL}/classe/afficher`);
     }
+    countClasses(): Observable<any> {
+      return this.http.get<any>(`${environment.BASE_URL}/classe/count-classes`);
+    }
 }

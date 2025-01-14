@@ -52,6 +52,8 @@ import { ModiferMenuComponent } from './dashboard-components/gestion-Menu/modife
 import { DetaillsDisciplineComponent } from './dashboard-components/gestion-discipline/detaills-discipline/detaills-discipline.component';
 import { AddActualiteComponent } from './dashboard-components/gestion-actualites/add-actualite/add-actualite.component';
 import { GestionPaiementComponent } from './dashboard-components/gestion-paiement/gestion-paiement.component';
+import { AddMatiereComponent } from './dashboard-components/gestion-matiere/add-matiere/add-matiere.component';
+import { DetailsReclamationComponent } from './dashboard-components/gestion-reclamation/details-reclamation/details-reclamation.component';
 
 
 @NgModule({
@@ -104,6 +106,8 @@ import { GestionPaiementComponent } from './dashboard-components/gestion-paiemen
     DetaillsDisciplineComponent,
     AddActualiteComponent,
     GestionPaiementComponent,
+    AddMatiereComponent,
+    DetailsReclamationComponent,
   ],
   imports: [
     CommonModule,

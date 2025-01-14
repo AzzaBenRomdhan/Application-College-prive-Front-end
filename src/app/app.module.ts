@@ -12,9 +12,9 @@ import { TawasalnaModule } from './tawasalna-module'
 
 // Modules
 import { DashboardModule } from './dashboard/dashboard.module';
-import { ComponentsModule } from './components/components.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { JwtInterceptor } from './JwtInterceptor';
 
 @NgModule({
   declarations: [
@@ -28,13 +28,18 @@ import { SharedModule } from './shared/shared.module';
     FeatherModule.pick(allIcons),
     TawasalnaModule,
     DashboardModule,
-    ComponentsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor, // Enregistrement de l'interceptor
+      multi: true // Permet de garder d'autres interceptors en place si nécessaire
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

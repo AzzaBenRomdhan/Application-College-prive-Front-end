@@ -6,43 +6,34 @@
     <div class="details-container">
       <div class="detail-field">
         <mat-label>Nom</mat-label>
-        <span>Dupont</span>
+        <span>{{data.nom}}</span>
       </div>
   
       <div class="detail-field">
         <mat-label>Prénom</mat-label>
-        <span>Jean</span>
+        <span>{{data.prenom}}</span>
       </div>
   
       <div class="detail-field">
-        <mat-label>Numéro d'inscription</mat-label>
-        <span>20230045</span>
+        <mat-label>Matricule</mat-label>
+        <span>{{data.matricule}}</span>
       </div>
   
       <div class="detail-field">
         <mat-label>Classe</mat-label>
-        <span>Classe 2</span>
+        <span>{{data.classe.nomclasse}}</span>
       </div>
-  
+
       <div class="detail-field">
-        <mat-label>Date de naissance</mat-label>
-        <span>15/08/2010</span>
+        <mat-label>Libellé</mat-label>
+        <span>{{data.libelle}}</span>
       </div>
   
       <div class="detail-field">
         <mat-label>Adresse email</mat-label>
-        <span>jean.dupontgmail.com</span>
+        <span>{{data.email}}</span>
       </div>
   
-      <div class="detail-field">
-        <mat-label>Téléphone des parents</mat-label>
-        <span>+33 6 12 34 56 78</span>
-      </div>
-  
-      <div class="detail-field">
-        <mat-label>Adresse</mat-label>
-        <span>12 Rue des Écoles, Paris</span>
-      </div>
     </div>
   </mat-dialog-content>
   
