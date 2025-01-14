@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -11,10 +11,11 @@ export class ReclamationService {
   constructor(private http: HttpClient) {}
 
   // Ajouter une réclamation
-  reclamer(reclamation: any, email: string): Observable<string> {
-    return this.http.post<string>(`${environment.BASE_URL}/rec/ajouter`, reclamation, {
-      params: new HttpParams().set('email', email),
-    });
+  reclamer(email: string, matricule: string, sujet: string, date: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const params = { email, matricule, sujet, date };
+
+    return this.http.post<any>(`${environment.BASE_URL}/rec/ajouter`, null, { params, headers });
   }
 
   // Afficher toutes les réclamations
@@ -50,5 +51,11 @@ export class ReclamationService {
     return this.http.delete<string>(`${environment.BASE_URL}/rec/supprimer`, {
       params: new HttpParams().set('id', id.toString()),
     });
+  }
+
+
+  // Récupérer les réclamations par destinataire
+  getReclamationsByDestinataire(email: string): Observable<any> {
+    return this.http.get(`${environment.BASE_URL}/rec/afficherbydestinataire`, { params: { email } });
   }
 }

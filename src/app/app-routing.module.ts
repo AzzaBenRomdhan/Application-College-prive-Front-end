@@ -32,6 +32,7 @@ import { HomeMoyenneEtNoteComponent } from './dashboard/dashboard-components/Ges
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CalendrierEmploiComponent } from './dashboard/dashboard-components/gestion-calendrier-emploi/calendrier-emploi/calendrier-emploi.component';
 import { AcceuilComponent } from './dashboard/dashboard-components/gestion-Menu/acceuil/acceuil.component';
+import { GestionPaiementComponent } from './dashboard/dashboard-components/gestion-paiement/gestion-paiement.component';
 
 const routes: Routes = [
   {
@@ -79,6 +80,7 @@ const routes: Routes = [
     component:FullComponent,
     children: [
       {path:"auth", redirectTo:"/auth", pathMatch:"full"},
+      {path:"gestion-paiement", component:GestionPaiementComponent},
       {path:"enseignants", component:GestionEnseignantsComponent},
       {path:"eleves", component:GestionElevesComponent},
       {path:"parents", component:GestionParentsComponent},

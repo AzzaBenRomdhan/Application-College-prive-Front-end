@@ -1,0 +1,77 @@
+<div class="menu2-container">
+    <!-- Affichage du Menu du Jour -->
+    <div class="menu-card">
+      <div class="back-button">
+        <a routerLink="/eleve/home-eleve">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+      <div class="menu-header">
+        <h3>Enregistrer un paiement</h3>
+      </div>
+      <div class="menu-body">
+        <form [formGroup]="payementForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="matricule">Matricule</label>
+            <input id="matricule" formControlName="matricule" class="form-control" />
+          </div>
+  
+          <div class="form-group">
+            <label for="amountPaye">Montant Payé</label>
+            <input id="amountPaye" type="number" formControlName="amountPaye" class="form-control" />
+          </div>
+  
+          <div class="form-group">
+            <label for="modepay">Mode de Paiement</label>
+            <select id="modepay" formControlName="modepay" class="form-control">
+              <option *ngFor="let mode of modepayOptions" [value]="mode">{{ mode }}</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="modalitePay">Modalité de Paiement</label>
+            <select id="modalitePay" formControlName="modalitePay" class="form-control">
+              <option *ngFor="let modalite of modalitePayOptions" [value]="modalite">{{ modalite }}</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="typepay">Type de Paiement</label>
+            <select id="typepay" formControlName="typepay" class="form-control">
+              <option *ngFor="let type of typepayOptions" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="statuspay">Statut de Paiement</label>
+            <select id="statuspay" formControlName="statuspay" class="form-control">
+              <option *ngFor="let status of statuspayOptions" [value]="status">{{ status }}</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="trimestre">Trimestre (facultatif)</label>
+            <select id="trimestre" formControlName="trimestre" class="form-control">
+              <option *ngFor="let trimestre of trimestreOptions" [value]="trimestre">{{ trimestre }}</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="date">Date (facultatif)</label>
+            <input id="date" type="date" formControlName="date" class="form-control" />
+          </div>
+  
+          <button type="submit" class="btn btn-primary mt-3">Enregistrer</button>
+        </form>
+  
+        <!-- Messages de succès ou d'erreur -->
+        <div *ngIf="successMessage" class="alert alert-success mt-3">
+          {{ successMessage }}
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
