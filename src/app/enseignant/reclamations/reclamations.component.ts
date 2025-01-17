@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ReclamationService } from 'src/app/services/reclamation.service';
 import { DetailsReclamationComponent } from './details-reclamation/details-reclamation.component';
+import { ReponseComponent } from './reponse/reponse.component';
 
 @Component({
   selector: 'app-reclamations',
@@ -47,5 +48,11 @@ export class ReclamationsComponent implements OnInit {
         width: '600px',
         data: rec
       })
-    }
+  }
+  repondre(reclamation: any):void{
+    this.dialog.open(ReponseComponent, {
+      width: '600px',
+      data: reclamation
+    })
+  }
 }

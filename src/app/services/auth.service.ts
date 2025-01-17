@@ -25,8 +25,8 @@ export class AuthService {
   constructor(private http: HttpClient,
     private router: Router,) { }
 
-    addEleve(user: any, nomclasse: string): Observable<any> {
-      const url = `${environment.BASE_URL}/users/addEleve?nomclasse=${nomclasse}`;
+    addEleve(user: any, nomclasse: string, matricule: string): Observable<any> {
+      const url = `${environment.BASE_URL}/users/addEleve/${nomclasse}/${matricule}`;
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       return this.http.post(url, user, { headers });
     }

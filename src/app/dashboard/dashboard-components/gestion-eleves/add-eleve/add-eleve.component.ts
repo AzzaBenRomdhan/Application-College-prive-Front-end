@@ -30,7 +30,9 @@ export class AddEleveComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       profil: ['eleve', [Validators.required]],
       libelle: ['', [Validators.required]],
-      nomclasse: ['', [Validators.required]]
+      nomclasse: ['', [Validators.required]],
+      matricule: ['', [Validators.required]]
+
     });
   }
 
@@ -55,9 +57,11 @@ export class AddEleveComponent implements OnInit {
     console.log('Formulaire:', this.userForm.value);
 
     const user = this.userForm.value;
-    const nomclasse = this.userForm.get('nomclasse')?.value; // Récupérer la classe sélectionnée
+    const nomclasse = this.userForm.get('nomclasse')?.value; 
+    const matricule = this.userForm.get('matricule')?.value; 
 
-    this.authService.addEleve(user, nomclasse).subscribe({
+
+    this.authService.addEleve(user, nomclasse, matricule).subscribe({
       next: (response) => {
         console.log('Utilisateur ajouté avec succès', response);
         this.dialogRef.close('Utilisateur ajouté');
@@ -81,4 +85,6 @@ export class AddEleveComponent implements OnInit {
   get libelle() { return this.userForm.get('libelle'); }
   get profil() { return this.userForm.get('profil'); }
   get nomclasse() { return this.userForm.get('nomclasse'); }
+  get matricule() { return this.userForm.get('matricule'); }
+
 }

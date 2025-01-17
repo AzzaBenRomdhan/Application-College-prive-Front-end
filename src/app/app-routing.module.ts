@@ -14,13 +14,15 @@ import { GestionSallesComponent } from './dashboard/dashboard-components/gestion
 import { GestionMatiereComponent } from './dashboard/dashboard-components/gestion-matiere/gestion-matiere.component';
 import { HomeMoyenneEtNoteComponent } from './dashboard/dashboard-components/GestionMoyenneEtNote/home-moyenne-et-note/home-moyenne-et-note.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { CalendrierEmploiComponent } from './dashboard/dashboard-components/gestion-calendrier-emploi/calendrier-emploi/calendrier-emploi.component';
 import { AcceuilComponent } from './dashboard/dashboard-components/gestion-Menu/acceuil/acceuil.component';
 import { GestionPaiementComponent } from './dashboard/dashboard-components/gestion-paiement/gestion-paiement.component';
 import { EleveGuard } from './guards/eleve.guard';
 import { ParentGuard } from './guards/parent.guard';
 import { EnseignantGuard } from './guards/enseignant.guard';
 import { authGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { GestionCalendrierExComponent } from './dashboard/dashboard-components/gestionCalendrierEx/gestion-calendrier-ex/gestion-calendrier-ex.component';
+import { GestionEmploiTempsComponent } from './dashboard/dashboard-components/gestion-Emploi-Temps/gestion-emploi-temps/gestion-emploi-temps.component';
 
 const routes: Routes = [
   {
@@ -38,7 +40,7 @@ const routes: Routes = [
       import('./eleve/eleve.module').then(
         (m) => m.EleveModule
       ),
-      canActivate: [EleveGuard]
+      canActivate: [authGuard, EleveGuard]
   },
   {
     path : 'parent',
@@ -61,7 +63,6 @@ const routes: Routes = [
       import('./shared/shared.module').then(
         (m) => m.SharedModule
       ),
-      //canActivate: [authGuard, AgentGuard]
   },
   {
     path:"dashboard",
@@ -82,8 +83,11 @@ const routes: Routes = [
       {path:"moyennes-notes/:id", component:HomeMoyenneEtNoteComponent},
       {path:"gestion-menu", component:AcceuilComponent},
       {path:"matieres", component:GestionMatiereComponent},
-      {path:"calendrier-emploi", component:CalendrierEmploiComponent},
-    ]
+      {path:"calendrier-examen", component:GestionCalendrierExComponent},
+      {path:"emploi-temps", component:GestionEmploiTempsComponent},
+
+    ],
+    canActivate: [authGuard, AdminGuard]
   },
 
   {path:"", redirectTo:"/home", pathMatch:"full"},

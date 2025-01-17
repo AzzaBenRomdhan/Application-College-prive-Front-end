@@ -33,13 +33,10 @@ import { HomeEleveComponent } from '../eleve/home-eleve/home-eleve.component';
 import { GestionSallesComponent } from './dashboard-components/gestion-salles/gestion-salles.component';
 import { ModiferSalleComponent } from './dashboard-components/gestion-salles/modifer-salle/modifer-salle.component';
 import { GestionMatiereComponent } from './dashboard-components/gestion-matiere/gestion-matiere.component';
-import { GestionClendrierComponent } from './dashboard-components/gestion-calendrier-emploi/gestion-clendrier/gestion-clendrier.component';
 import { HomeMoyenneEtNoteComponent } from './dashboard-components/GestionMoyenneEtNote/home-moyenne-et-note/home-moyenne-et-note.component';
 import { NotesDetailsComponent } from './dashboard-components/GestionMoyenneEtNote/notes-details/notes-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from '../parent/profile/profile.component';
-import { CalendrierEmploiComponent } from './dashboard-components/gestion-calendrier-emploi/calendrier-emploi/calendrier-emploi.component';
-import { GestionEmploiComponent } from './dashboard-components/gestion-calendrier-emploi/gestion-emploi/gestion-emploi.component';
 import { CreateMenuComponent } from './dashboard-components/gestion-Menu/create-menu/create-menu.component';
 import { AcceuilComponent } from './dashboard-components/gestion-Menu/acceuil/acceuil.component';
 import { ListeDesMenuComponent } from './dashboard-components/gestion-Menu/liste-des-menu/liste-des-menu.component';
@@ -49,7 +46,14 @@ import { AddActualiteComponent } from './dashboard-components/gestion-actualites
 import { GestionPaiementComponent } from './dashboard-components/gestion-paiement/gestion-paiement.component';
 import { AddMatiereComponent } from './dashboard-components/gestion-matiere/add-matiere/add-matiere.component';
 import { DetailsReclamationComponent } from './dashboard-components/gestion-reclamation/details-reclamation/details-reclamation.component';
-
+import { ListCalendrierExComponent } from './dashboard-components/gestionCalendrierEx/list-calendrier-ex/list-calendrier-ex.component';
+import { AddCalendrierExComponent } from './dashboard-components/gestionCalendrierEx/add-calendrier-ex/add-calendrier-ex.component';
+import { AddEmploiComponent } from './dashboard-components/gestion-Emploi-Temps/add-emploi/add-emploi.component';
+import { ListEmploiComponent } from './dashboard-components/gestion-Emploi-Temps/list-emploi/list-emploi.component';
+import { GestionCalendrierExComponent } from './dashboard-components/gestionCalendrierEx/gestion-calendrier-ex/gestion-calendrier-ex.component';
+import { GestionEmploiTempsComponent } from './dashboard-components/gestion-Emploi-Temps/gestion-emploi-temps/gestion-emploi-temps.component';
+import { EnvoyerAElevesComponent } from './dashboard-components/gestionCalendrierEx/envoyer-aeleves/envoyer-aeleves.component';
+import { EnvoyerEmploiComponent } from './dashboard-components/gestion-Emploi-Temps/envoyer-emploi/envoyer-emploi.component';
 
 @NgModule({
   declarations: [
@@ -83,12 +87,9 @@ import { DetailsReclamationComponent } from './dashboard-components/gestion-recl
     GestionSallesComponent,
     ModiferSalleComponent,
     GestionMatiereComponent,
-    GestionClendrierComponent,
     HomeMoyenneEtNoteComponent,
     NotesDetailsComponent,
     ProfileComponent,
-    CalendrierEmploiComponent,
-    GestionEmploiComponent,
     CreateMenuComponent,
     AcceuilComponent,
     ListeDesMenuComponent,
@@ -98,6 +99,15 @@ import { DetailsReclamationComponent } from './dashboard-components/gestion-recl
     GestionPaiementComponent,
     AddMatiereComponent,
     DetailsReclamationComponent,
+    ListCalendrierExComponent,
+    AddCalendrierExComponent,
+    AddEmploiComponent,
+    ListEmploiComponent,
+    GestionCalendrierExComponent,
+    GestionEmploiTempsComponent,
+    EnvoyerAElevesComponent,
+    EnvoyerAElevesComponent,
+    EnvoyerEmploiComponent
   ],
   imports: [
     CommonModule,

@@ -13,14 +13,7 @@
       <mat-icon matPrefix>announcement</mat-icon>
     </mat-form-field>
 
-    <!-- Date --> <!--ici il n'affiche pas la date ancienne peut etre car dans lma bd est affiche comme ca 2024-02-12 ? sans heure-->
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date" required>
-      <mat-icon matPrefix>calendar_today</mat-icon>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+  
 
     <!-- Affichage de la vidéo existante (si aucune nouvelle vidéo n'est sélectionnée) -->
     <div *ngIf="!selectedVideoFile && existingVideoUrl">

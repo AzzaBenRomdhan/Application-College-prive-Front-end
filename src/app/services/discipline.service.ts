@@ -12,10 +12,9 @@ export class DisciplineService {
   constructor(private http: HttpClient) {}
 
   // Ajouter une discipline
-  ajouterDiscipline(file: File, date: string, cause: string, eleveId: number, enseignantId: number): Observable<any> {
+  ajouterDiscipline(file: File, cause: string, eleveId: number, enseignantId: number): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('date', date);
     formData.append('cause', cause);
     formData.append('eleveId', eleveId.toString());
     formData.append('enseignantId', enseignantId.toString());
@@ -50,12 +49,10 @@ export class DisciplineService {
   updateDiscipline(
     id: number,
     cause?: string,
-    date?: string,
     file?: File,
   ): Observable<any> {
     const formData = new FormData();
     if (cause) formData.append('cause', cause);
-    if (date) formData.append('date', date);
     if (file) formData.append('file', file);
 
     return this.http.put(`${this.baseUrl}/update/${id}`, formData);

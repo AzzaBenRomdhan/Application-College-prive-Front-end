@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GestionEmploiComponent } from './gestion-emploi.component';
+import { EnvoyerAElevesComponent } from './envoyer-aeleves.component';
 
-describe('GestionEmploiComponent', () => {
-  let component: GestionEmploiComponent;
-  let fixture: ComponentFixture<GestionEmploiComponent>;
+describe('EnvoyerAElevesComponent', () => {
+  let component: EnvoyerAElevesComponent;
+  let fixture: ComponentFixture<EnvoyerAElevesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GestionEmploiComponent ]
+      declarations: [ EnvoyerAElevesComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GestionEmploiComponent);
+    fixture = TestBed.createComponent(EnvoyerAElevesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

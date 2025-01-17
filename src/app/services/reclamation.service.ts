@@ -36,13 +36,10 @@ export class ReclamationService {
       params: new HttpParams().set('email', email),
     });
   }
-
-  // Répondre à une réclamation
-  respondToReclamation(id: number, response: string): Observable<string> {
-    return this.http.post<string>(`${environment.BASE_URL}/rec/reponse`, null, {
-      params: new HttpParams()
-        .set('id', id.toString())
-        .set('reponse', response),
+  repondreReclamation(id: number, email: string, reponse: string): Observable<any> {
+    const url = `${environment.BASE_URL}/rec/${id}/repondre`;
+    return this.http.post<any>(url, reponse, {
+      params: { email },
     });
   }
 

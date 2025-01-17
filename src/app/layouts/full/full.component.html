@@ -64,11 +64,19 @@
           </li>
           
           <li class="list-group mb-4 nav-item" *ngIf="userProfile == 'admin' || userProfile == 'Admin'">
-            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/dashboard/calendrier-emploi"
+            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/dashboard/calendrier-examen"
               class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
-              <i-feather name="calendar" class="feather-base me-16"></i-feather> <span class="ps-4">Calendrier et emploi</span>
+              <i-feather name="calendar" class="feather-base me-16"></i-feather> <span class="ps-4">Gestion de calendrier d'examen</span>
             </a>
           </li>
+          
+          <li class="list-group mb-4 nav-item" *ngIf="userProfile == 'admin' || userProfile == 'Admin'">
+            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/dashboard/emploi-temps"
+              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
+              <i-feather name="clock" class="feather-base me-16"></i-feather> 
+              <span class="ps-4">Gestion d'emploi du temps</span>
+            </a>
+          </li>          
           
           <li class="list-group mb-4 nav-item" *ngIf="userProfile == 'admin' || userProfile == 'Admin'">
             <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/dashboard/actualites"
@@ -106,44 +114,6 @@
             </a>
           </li>
           
-
-          <!--Lien pour les ensenignant-->
-         <!--  <li class="list-group nav-item" *ngIf="userProfile == 'enseignant'" class="mb-2">
-            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/enseignant/mescours"
-              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
-              <i-feather name="box" class="feather-base me-16"></i-feather> <span class="ps-4">Mes cours</span>
-            </a>
-          </li>
-
-          <li class="list-group nav-item" *ngIf="userProfile == 'enseignant'" class="mb-2">
-            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/enseignant/disicplines"
-              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
-              <i-feather name="alert-circle" class="feather-base me-16"></i-feather> <span class="ps-4">Discipline</span>
-            </a>
-          </li>
-
-          <li class="list-group mb-4 nav-item" *ngIf="userProfile == 'enseignant' || userProfile == 'Enseignant'" class="mb-2">
-            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/enseignant/actualites"
-              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
-              <i-feather name="calendar" class="feather-base me-16"></i-feather> <span class="ps-4">Actualités</span>
-            </a>
-          </li>
-
-          <li class="list-group mb-4 nav-item" *ngIf="userProfile == 'enseignant' || userProfile == 'Enseignant'">
-            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/enseignant/reclamations"
-              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
-              <i-feather name="info" class="feather-base me-16"></i-feather> <span class="ps-4">Réclamation</span>
-            </a>
-          </li>
- -->
-
-          <!--Lien pour les parent-->
-          <li class="list-group nav-item" *ngIf="userProfile == 'parent'">
-            <a matRipple [matRippleColor]="'#f7f8f443'" routerLink="/parent/mescours"
-              class="nav-link sidebar-menu fs-16 w-100 d-flex align-items-center" [routerLinkActive]="routerActive">
-              <i-feather name="box" class="feather-base me-16"></i-feather> <span class="ps-4">Mes élèves</span>
-            </a>
-          </li>
         </ul>
       </div>  
 

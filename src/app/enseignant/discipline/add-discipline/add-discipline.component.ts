@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DisciplineService } from 'src/app/services/discipline.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -22,7 +23,7 @@ export class AddDisciplineComponent implements OnInit {
     private disciplineService: DisciplineService,
     private dialogRef: MatDialogRef<AddDisciplineComponent>,
     private userService: UserService,
-    private datePipe: DatePipe
+    private snackBar:MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -47,7 +48,6 @@ export class AddDisciplineComponent implements OnInit {
   initForm(): void {
     this.disciplineForm = this.fb.group({
       cause: ['', Validators.required],
-      date: ['', Validators.required],
       file: [null],
       eleveId: ['', Validators.required],
       enseignantId: [this.enseignant.id, Validators.required] // Champ masqué avec valeur fixée
@@ -67,18 +67,26 @@ export class AddDisciplineComponent implements OnInit {
 
   ajouterDiscipline(): void {
     const formValues = this.disciplineForm.value;
-    const formattedDate = this.datePipe.transform(formValues.date, 'yyyy-MM-dd') || '';
 
     this.disciplineService.ajouterDiscipline(
       formValues.file,
-      formattedDate,
       formValues.cause,
       formValues.eleveId,
       formValues.enseignantId
     ).subscribe({
       next: (response) => {
         console.log('Discipline ajoutée avec succès', response);
+
+        // Afficher le Snackbar de succès
+        this.snackBar.open('Discipline ajoutée avec succès !', 'Fermer', {
+          duration: 3000, // 3 secondes
+          verticalPosition: 'top', // Position en haut
+          horizontalPosition: 'right', // Position à droite
+        });
+
         this.dialogRef.close();
+        window.location.reload();
+
       },
       error: (error) => {
         console.error('Erreur lors de l\'ajout de la discipline', error);

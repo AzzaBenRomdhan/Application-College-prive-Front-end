@@ -36,8 +36,8 @@ import { JwtInterceptor } from './JwtInterceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor, // Enregistrement de l'interceptor
-      multi: true // Permet de garder d'autres interceptors en place si nécessaire
+      useClass: JwtInterceptor, 
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

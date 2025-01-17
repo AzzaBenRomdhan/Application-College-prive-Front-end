@@ -39,7 +39,6 @@ export class ModifierDisciplineComponent {
   initForm(): void {
     this.disciplineForm = this.fb.group({
       cause: [this.data.cause],
-      date: [this.data.date],
       status: [this.data.status],
     });
   }
@@ -61,15 +60,12 @@ export class ModifierDisciplineComponent {
 
   modifierDiscipline(): void {
     const formValues = this.disciplineForm.value;
-    const formattedDate = this.datePipe.transform(formValues.date, 'yyyy-MM-dd') || '';
-
     // Si une nouvelle vidéo a été sélectionnée, on l'envoie au service
     const videoFile = this.selectedVideoFile ? this.selectedVideoFile : null;
 
     this.disciplineService.updateDiscipline(
       this.data.id,
       formValues.cause,
-      formattedDate,
       videoFile! // Envoi de la vidéo si elle est sélectionnée, sinon envoi de null
     ).subscribe({
       next: (response) => {

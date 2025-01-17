@@ -49,6 +49,17 @@
       </mat-error>
     </mat-form-field>
 
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Matricule</mat-label>
+      <input matInput type="texte" placeholder="Entrez la matricule" formControlName="matricule" required minlength="8">
+      <mat-icon matPrefix>lock</mat-icon>
+      <mat-error *ngIf="matricule?.invalid && matricule?.touched">
+        <span *ngIf="matricule?.errors?.['required']">La matricule est requise.</span>
+        <span *ngIf="matricule?.errors?.['minlength']">La matricule doit contenir au moins 8 caractères.</span>
+      </mat-error>
+    </mat-form-field>
+
+
     <!-- Profil -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Profil</mat-label>
